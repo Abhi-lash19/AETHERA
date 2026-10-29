@@ -1,52 +1,78 @@
 # Aethera — Project Status
 
-**Updated:** 2026-10-30  
-**Overall state:** Planning / documentation drafting. **No working dashboard is claimed.**
+**Updated:** 2026-10-30
 
-## Verified versus reported
+**State:** Full tracker implemented and locally checked. Deployment verification is in progress; this revision does not claim a live deployment.
 
-| Area | State | Evidence / caveat |
-| --- | --- | --- |
-| GitHub repository `Abhi-lash19/AETHERA` | **Verified through connected GitHub** | Read current `main` repository documents via GitHub connector |
-| README and planning docs | **Present on GitHub** | Curriculum and tracker spec read from `main`; product behavior design updated in documentation only |
-| Curriculum approval | **Approved baseline** | User confirmed curriculum commit `7f1f4db47db9273c7cf60f48062d76e39fb36799`; 7 phases, 31 topic IDs; 14 module groupings now documented |
-| Resource inventory | **Partially inspected** | See `CURRICULUM.md`; specific deep links/mobile/tests mostly pending |
-| Product features | **Not implemented** | No app code requested or created in this documentation package |
-| UI/UX design | **Draft only** | No mockups approved; no real-device tests |
-| Browser progress persistence | **Not implemented** | Proposal only |
-| GitHub Pages | **Not configured/verified here** | No published site URL claimed |
-| CI/tests/build | **Not implemented** | No executable app or test suite |
+## Source and authorization
 
-## Accepted scope
+The user explicitly authorized the complete implementation, ordinary internal checkpoints, tests, Pages deployment, and commit/push after successful checks. This supersedes the earlier documentation-only stage for this task. The clean checkout was fast-forwarded from `7f1f4db` to **`ef5a5acffc1af014ddf02f46b60ba9168ef5812d`** before implementation. `AGENTS.md`, `README.md` and every `docs/` document were read. Curriculum content and accepted decisions were preserved.
 
-- Personal visual-first AI engineering **tracker**.
-- Concise but thorough guided curriculum, external resources and exercises.
-- Lightweight website (likely vanilla HTML/CSS/JS), hosted on GitHub Pages.
-- Personal laptop edit workflow; mobile view-only after publishing.
-- No lab, backend, database, mandatory React app, or in-dashboard inference.
+## Implemented behavior
 
-## Documentation remaining
+- Home: current phase/topic, deterministic prerequisite-aware recommendation, relevant Continue activity, three independent progress bars and recent topics.
+- Exact **7 phases, 14 modules, 31 topics**, 31 required study activities, 31 practicals and **44 resource assignments**. Optional deep dives and original verification caveats are retained.
+- Connected desktop roadmap with SVG sequence/dependency edges and semantic phase/module/topic hierarchy; selectable list presentation; mobile vertical roadmap; contextual desktop/full-screen mobile topic detail; Back/Forward and hash deep links.
+- Curriculum-text search; phase, status, incomplete, review, bookmark and skipped-practice filters; saved topic/resource search.
+- Independent study, self-assessed understanding and actual practice; reversible completion and skips. Conceptual prerequisites do not gate exploration or depend on completed practicals. An adaptation plan never claims a training run.
+- Versioned local progress, topic/resource bookmarks, notes, questions, review flags, evidence URLs, skip reasons and ten timestamped recent topics. Save failures are surfaced and corrupt storage is retained for recovery.
+- Public read-only default; explicit local editing; opt-in initial seeding from a valid snapshot; publication never automatically overwrites local work.
+- Private backup; validated replace-only import with preview, backup and cancel actions; unknown IDs retained separately without counting.
+- Public allowlist preview/download, strict deployed-file validation and manual publication instructions. Initial snapshot is honestly `not_published`; no achievements or private learning notes are committed.
+- Original SVG/CSS identity, dark/light palettes, System/Dark/Light persistence, native controls, focus management, expressive responsive motion and reduced-motion support.
 
-- Review curriculum depth and exact topic sequencing with user.
-- Verify resource sections and their learning quality, links and requirements.
-- **Completed in documentation:** Core progress and next-recommendation rules finalized in `docs/TRACKER_SPEC.md`; implementation/testing still pending.
-- Approve screen content, navigation, dark/light visual style and touch gestures.
-- **Partially finalized:** Public progress allowlist and manual publication intent are defined; technical schema and publication mechanics await `docs/TECHNICAL_DESIGN.md`.
-- Record a concrete, small implementation milestone only after specifications are approved.
+## Changed files
 
-## Proposed next discussion sequence
+| Files | Responsibility |
+| --- | --- |
+| `package.json`, `package-lock.json`, `vite.config.js`, `index.html`, `.gitignore` | Build, shell, pins and private/generated-file exclusions |
+| `scripts/curriculum.mjs`, `src/data/curriculum.json` | Source conversion/validation and public snapshot validation |
+| `src/state/{progress,recommendations,imports,storage,publishing}.js` | Pure logic, local state, validation and public allowlist |
+| `src/navigation/router.js`, `src/main.js` | Routing, mode, event wiring, persistence, dialogs and recovery |
+| `src/components/{ui,navigation,topic-detail}.js` | Safe rendering, navigation and full topic detail |
+| `src/views/{home,roadmap,saved,progress}.js` | Four main destinations and adaptive graph/list |
+| `src/styles/{tokens,base,layout,components,motion}.css` | Tokens, responsive layouts and motion |
+| `public/favicon.svg`, `public/data/published-progress.json` | Original mark and unpublished snapshot |
+| `tests/logic.test.mjs`, `scripts/browser-check.mjs` | One focused logic file and framework-free acceptance script |
+| `.github/workflows/pages.yml` | Check, build and deploy only `dist/` |
+| `README.md`, `docs/PROJECT_STATUS.md` | Operating instructions and truthful evidence |
 
-1. Review and finalize `docs/UI_UX.md`: inspiration references, desktop/mobile structure, navigation, touch gestures and motion.
-2. Refine `docs/TECHNICAL_DESIGN.md` to implement the agreed tracker features, export/import and public snapshot behavior without adding unnecessary infrastructure.
-3. Verify unresolved learning-resource interactions, particularly on mobile, as those resources enter the app.
-4. Once designs and mechanics are approved, define a small implementation milestone and request Codex implementation.
+No runtime framework, backend, database, auth, model service or inference engine was added. Development dependencies: **Vite 8.3.5**, **Playwright 1.64.1**. Local Node: **24.21.0**.
 
-## Verification log
+## Verification evidence
 
-- **2026-10-30:** Read current GitHub curriculum, tracker spec and agent instructions. Checked a one-to-one mapping of all 31 existing topic IDs into 14 unique named modules across 7 phases. Finalized product behavior rules as documentation only; no UI, browser-storage, import, mobile or deployment testing performed.
-- **2026-10-30:** Checked content reachable on Forward Pass, Transformer Explainer and the inference-infrastructure index; bbycroft page title reachable in text browser; Vizuara site content could not be fetched. No interactive browser/mobile behavior verified.
-- **2026-10-30:** Documentation package generated in assistant working environment. No GitHub changes or tests performed on the user's clone.
+| Check | Actual result |
+| --- | --- |
+| `npm ci` | **PASS, exit 0**; 17 packages, 0 audit vulnerabilities. An earlier Windows native-module lock was resolved by stopping preview and retrying. |
+| `npm run validate:data` | **PASS, exit 0**; exact source derivative, 7/14/31 hierarchy, 44 resource assignments, unique stable study IDs, known acyclic prerequisites, HTTPS URLs and public-file allowlist |
+| `npm test` | **PASS, exit 0**; 11 tests in one Node test file |
+| `npm run build` | **PASS, exit 0**; 23 modules; approximately 111.58 kB JS / 24.62 kB CSS, 28.14 / 6.11 kB gzip |
+| `npm run test:e2e` | **PASS, exit 0** against production preview, installed Google Chrome, isolated Playwright contexts |
+| Responsive checks | **PASS in Chromium emulation:** 320, 360, 390, 430, 768, 1024, 1280, 1440 px; Home, Roadmap, Saved, Progress and long adaptation detail without overflow |
+| Browser interactions | **PASS scripted:** editing opt-in; phase/module expansion; topic selection; study/understanding/practice; skip reason; notes/questions/review/evidence; bookmarks; search/filter/clear; list view; Enter/Space; Back/Forward; hard reload; theme persistence; reduced motion |
+| Backup and privacy | **PASS scripted:** private backup download; public preview excludes private fixture data; invalid import rejection; cancel preserves state; replace/restore; no edit controls or private text in public mode; published fixture; fetch failure; corrupt data retained; disabled storage prevents false editing success |
+| Touch | **PASS Chromium emulation:** phase/module/topic taps, Back and native vertical scroll starting over a card. Not an actual phone test. |
+| Visual review | Generated and visually inspected desktop dark Home/Roadmap and mobile light detail. Screenshots include all eight roadmap widths and 390/1440 light detail in ignored `artifacts/`. |
+| External links | **35/35 unique assigned and optional-resource URLs returned HTTP 200** via GET; titles/redirects in ignored `artifacts/link-results.json`. This does not test third-party controls or exercises. |
+| `git diff --check` | **PASS, exit 0**; expected Windows LF/CRLF normalization notices |
 
-## When Codex begins
+Fixed transient 320px overflow from panel entrance motion by using vertical motion on narrow screens. Fixed bare project URL routing to the missing-page state; it now opens Home with a regression test. Browser-harness navigation waits and mocked-snapshot reloads were corrected before the successful acceptance run.
 
-For each change, record: objective, exact files touched, checks run and their results, screenshots/manual evidence when relevant, commit SHA and URL when deployed. Use `NOT TESTED` when verification did not happen. Never carry forward a stale `completed` label without evidence.
+## Deployment state
+
+- Pages workflow and `/AETHERA/` base path configured in code.
+- User confirmed **Settings → Pages → Source: GitHub Actions** during this task.
+- Connected GitHub reports write/admin access. Local Git has no noninteractive stored credential; checked trees will be published with connected GitHub tools.
+- Target: `https://Abhi-lash19.github.io/AETHERA/`.
+- Live site and final commit SHA: **NOT VERIFIED YET** in this revision. Record the workflow and live checks after publishing.
+
+## Outstanding verification and limitations
+
+- **Manual browser interaction: NOT VERIFIED.** Chrome and in-app browser control both returned `Local browser use is disabled in Work settings`. Scripted results are not claimed as manual tests.
+- **Real phone, Safari, Firefox, screen reader, physical one-handed usability and real-device safe areas: NOT VERIFIED.** No such sessions/devices were available; current evidence is Chromium viewport/touch emulation and native semantics.
+- **Third-party resource controls, mobile playback/WebGL/model runs, hardware exercises, notebook quotas and learning outcomes: NOT VERIFIED.** Original resource caveats remain; HTTP success only establishes reachability.
+- Published progress stays empty until the user deliberately exports, commits and deploys a sanitized snapshot. No automatic cross-device sync.
+
+## Next single milestone
+
+Verify the first Pages deployment, then record the commit/run URL and live checks here. Do not add new product scope automatically.

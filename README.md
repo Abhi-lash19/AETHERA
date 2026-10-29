@@ -1,79 +1,86 @@
 # Aethera — AI Engineering Learning Tracker
 
-> **Status:** Planning only. No application or dashboard has been implemented.
+A personal, visual-first learning workspace: understand the model, follow the connections, and build engineering judgment at your own pace.
 
-Aethera is my personal, visual-first AI engineering learning tracker: one attractive, mobile-friendly website that tells me **what to study, why it matters, where to learn it, what to try, how to tell whether I understood it, and what comes next**.
+Implements the approved **7 phases, 14 modules and 31 topics** as a static vanilla JavaScript site built with Vite. No backend, account, database, model inference or runtime framework. Exercises happen in linked resources or your own tools.
 
-This is **not** an AI engineering lab, an AI model, an online IDE, a course-hosting service, or a public portfolio. Any exercises happen in external websites, notebooks or projects; Aethera provides guidance and may record links to evidence.
+**Site:** https://Abhi-lash19.github.io/AETHERA/
 
-## Product principles
+See [Project status](docs/PROJECT_STATUS.md) for actual deployment and verification evidence.
 
-1. **Curriculum first:** agree on learning order and resources before developing the UI.
-2. **Visual-first:** recommend animations, interactive explanations and diagrams wherever genuinely useful.
-3. **Understand, don't just click:** track studying, practice and conceptual understanding separately.
-4. **Lightweight:** static GitHub Pages site; no backend, database, login or separate lab repository required.
-5. **Personal use:** edit progress on laptop; browse published progress read-only on phone.
-6. **Responsive by design:** touch, small screens, keyboard and accessibility are not optional.
-7. **Truthful status:** planned, implemented and verified are different things.
+## Use the tracker
 
-## Planned experience (not yet implemented)
+- **Home:** current phase/topic, a reasoned next activity, and independent Study / Understanding / Practical progress.
+- **Roadmap:** connected desktop phases, adaptive vertical mobile journey, expandable modules/topics, equivalent hierarchical list, search and filters.
+- **Topic detail:** original curriculum objectives, prerequisites, resources and caveats, practical instructions, self-assessment, optional private notes/questions/review flags/evidence.
+- **Saved:** browser-local bookmarks for individual topics and resources.
+- **Progress:** phase/module breakdowns, outstanding work, recent visits/updates, backups and publishing instructions.
+- **Appearance:** System / Dark / Light, reduced motion, keyboard/touch controls.
 
-- A welcoming home dashboard showing current learning phase, next recommended activity and progress.
-- Prerequisite-aware learning roadmap with expandable modules and topic detail views.
-- Curated direct links to verified free visual and interactive learning resources.
-- Checklist for learning activities; separate progress indicators for studying, exercises and understanding.
-- Practical exercise instructions, reflection prompts and optional evidence links, without running experiments in Aethera.
-- Personal notes and lightweight progress persistence; export/import and publication to GitHub for phone viewing.
-- Polished responsive layout, accessible controls, touch-friendly mobile interactions, dark/light appearance.
+The site opens in **read-only published mode**. Select **Progress → Enable editing on this browser** to record local learning. This is a preference, not authentication: any visitor can edit their own browser copy. Existing local progress is never silently replaced by a published snapshot. First-time editors can explicitly opt to start from a valid snapshot.
 
-**Every feature listed above is a requirement or proposal, not a working feature.** The exact behavior is subject to planning discussions.
+Study, understanding and practice are independent. Opening a resource does not complete it. Skipped practicals remain outstanding and do not block conceptual learning. A written adaptation plan never counts as an actual adapter training run.
 
-## Learning sequence — draft, not a fixed deadline
+## Back up and publish
 
-We will refine phases, topics and dependencies in `docs/CURRICULUM.md`. Initial areas: foundations and math intuition; tokenization and embeddings; Transformer attention; generation and sampling; GPU/memory fundamentals; prefill and decode; KV cache; quantization; batching and serving/vLLM; RAG and evaluation; fine-tuning and LoRA/QLoRA; preference optimization/DPO; benchmarking and applied synthesis.
+**Private backup:** Progress → Export private backup. This includes notes, questions, evidence, bookmarks and recoverable unknown IDs. Keep it private. Import validates and previews a **replace-only** operation; cancellation preserves existing data.
 
-The earlier 14-week idea is a **baseline for topic coverage**, not a deadline or promise that the curriculum has been finalized.
+**Publish for your phone:**
 
-## Initial resource bookmarks
+1. Update learning in the laptop browser.
+2. Select **Export public snapshot**, inspect the preview and download it.
+3. Replace `public/data/published-progress.json` in this checkout with that file.
+4. Inspect the diff, run `npm run build`, commit the snapshot and push to `main`.
+5. Wait for the Pages workflow to succeed, then refresh the site on your phone.
 
-These are research candidates, **not a fully audited curriculum**:
+Public snapshots contain only versions, creation time, current topic and study/understanding/practical states. Notes, questions, evidence, bookmarks, review flags, history and skip reasons are excluded. Build validation rejects unexpected public fields. The initial snapshot is intentionally `not_published`.
 
-- [Forward Pass](https://forwardpass.dev/) — multiple interactive LLM guides.
-- [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) — interactive Transformer and sampling exploration.
-- [LLM Visualization](https://bbycroft.net/llm) — inspect and assess for appropriate learning tasks.
-- [Inference Infrastructure animated tutorials](https://datasystem.school/inference-infrastructure-animated-tutorials/index.html) — animated infrastructure modules.
-- [Inference Engineering Visual Guides](https://vizuaraai.github.io/inference-engineering-visual-guides/) — pending section-by-section assessment.
+LocalStorage does **not** sync across browsers, phones or GitHub Actions. Exporting is not publishing. The website contains no GitHub token and cannot write to the repository. Clearing browser data can erase local progress; export private backups regularly. Corrupt storage can be downloaded for recovery before a deliberate reset.
 
-Resource links need relevant section-level review, mobile usability checks and a clear match to learning objectives before being presented as vetted recommendations.
+## Development
 
-## Intended technology (not chosen irrevocably)
+Use Node 24 LTS (minimum 22.12). Development versions are pinned: **Vite 8.3.5** and **Playwright 1.64.1**. No runtime dependencies. Vite provides static bundling and the Pages base path; Playwright is only for browser verification.
 
-Prefer modular **HTML, CSS, JavaScript, and structured JSON** on **GitHub Pages**. Use browser storage for editing on the laptop. Publishing changes for a phone to read requires an explicit export/publish mechanism; browser localStorage cannot be directly read by GitHub Actions. No framework will be added without a demonstrated benefit.
+```sh
+npm ci
+npm run dev
+npm run validate:data
+npm test
+npm run build
+npm run preview
+```
 
-## Project documentation
+With production preview running at `http://127.0.0.1:4173/AETHERA/`:
 
-| Document | Responsibility |
+```sh
+npm run test:e2e
+```
+
+The browser script uses installed Google Chrome (`channel: 'chrome'`) and isolated, disposable test contexts. Install Chrome from its official vendor if missing. Screenshots go to ignored `artifacts/`; no test learning data is published. Set `AETHERA_TEST_URL` to a deployed URL to check it. Chromium viewport/touch emulation is not real-phone or manual testing.
+
+Logic tests live in **one file**, `tests/logic.test.mjs`, using Node's built-in runner. `scripts/browser-check.mjs` is a plain Playwright acceptance script without a separate testing framework.
+
+## Curriculum maintenance
+
+`docs/CURRICULUM.md` is authoritative; `src/data/curriculum.json` is its deterministic derivative. After an approved educational change, edit the Markdown and run:
+
+```sh
+npm run data:sync
+npm run validate:data
+npm test
+```
+
+Review source and JSON in the same change. The converter intentionally supports this document's authored format. Missing fields or register entries fail instead of generating content. Validation checks exact source equality, counts, membership, stable IDs, prerequisite cycles, HTTPS URLs and public snapshot safety. ID or required-activity changes need a deliberate version/migration decision; unknown imported IDs remain recoverable and uncounted.
+
+## Deployment and documentation
+
+`.github/workflows/pages.yml` installs from the lockfile, validates data, runs logic tests, builds, uploads only `dist/`, and deploys through official Pages actions. **Settings → Pages → Source** must be **GitHub Actions**. The case-sensitive Vite base is `/AETHERA/`; hash deep links work without server rewrites.
+
+| Document | Source of truth |
 | --- | --- |
-| [`docs/CURRICULUM.md`](docs/CURRICULUM.md) | Topics, prerequisites, learning outcomes, resource mapping and practical tasks |
-| [`docs/TRACKER_SPEC.md`](docs/TRACKER_SPEC.md) | Dashboard content, behavior, progress semantics and user flows |
-| [`docs/UI_UX.md`](docs/UI_UX.md) | Desktop/mobile layouts, interactions, accessibility and visual direction |
-| [`docs/TECHNICAL_DESIGN.md`](docs/TECHNICAL_DESIGN.md) | Lightweight static architecture, data, storage and deployment decisions |
-| [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) | Verified state, decisions pending, next actions and evidence |
-| [`AGENTS.md`](AGENTS.md) | Development guardrails for Codex and other coding agents |
-
-## Workflow
-
-1. Agree on curriculum and specific resources in discussion.
-2. Finalize progress behavior and UI/UX before coding.
-3. Record approved changes in documentation and review them.
-4. Ask Codex to implement one small documented milestone.
-5. Test real browser behavior and update `PROJECT_STATUS.md` with evidence.
-6. Deploy to GitHub Pages only when deployment is actually verified.
-
-## Repository and hosting
-
-This repository is named **Aethera**. GitHub Pages configuration and the published URL are **not yet verified**. Nothing here should be represented as deployed or functional.
-
-## Privacy note
-
-GitHub Pages on a public repository exposes published site assets. Do not commit private reflections, personal credentials, tokens, or sensitive notes. We must explicitly define what progress data may be published before implementing phone sync.
+| [Curriculum](docs/CURRICULUM.md) | Topics, outcomes, resources, prerequisites and exercises |
+| [Tracker specification](docs/TRACKER_SPEC.md) | Interaction, progress and publication semantics |
+| [UI/UX](docs/UI_UX.md) | Visual direction, responsive behavior and accessibility |
+| [Technical design](docs/TECHNICAL_DESIGN.md) | Architecture, schemas and deployment guardrails |
+| [Project status](docs/PROJECT_STATUS.md) | Actual checks, deployment, limitations and next milestone |
+| [Agent instructions](AGENTS.md) | Development and handoff rules |

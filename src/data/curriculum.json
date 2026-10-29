@@ -1,0 +1,1716 @@
+{
+  "schemaVersion": 1,
+  "curriculumVersion": "aethera-core-v1",
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Foundations",
+      "order": 1,
+      "moduleIds": [
+        "foundations-neural-computation",
+        "foundations-text-representations"
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "Transformer computation",
+      "order": 2,
+      "moduleIds": [
+        "transformer-attention-core",
+        "transformer-outputs-generation"
+      ]
+    },
+    {
+      "id": "phase-3",
+      "name": "Inference mechanics",
+      "order": 3,
+      "moduleIds": [
+        "inference-decoding-cache",
+        "inference-context-performance"
+      ]
+    },
+    {
+      "id": "phase-4",
+      "name": "Hardware and local open-weight models",
+      "order": 4,
+      "moduleIds": [
+        "hardware-compute-memory",
+        "local-models-quantization"
+      ]
+    },
+    {
+      "id": "phase-5",
+      "name": "Inference engines and serving",
+      "order": 5,
+      "moduleIds": [
+        "serving-batching-memory",
+        "serving-runtimes-scheduling"
+      ]
+    },
+    {
+      "id": "phase-6",
+      "name": "Model adaptation",
+      "order": 6,
+      "moduleIds": [
+        "adaptation-foundations",
+        "adaptation-trials-preferences"
+      ]
+    },
+    {
+      "id": "phase-7",
+      "name": "Evidence and applied engineering",
+      "order": 7,
+      "moduleIds": [
+        "evidence-quality-benchmarks",
+        "evidence-reliability-decisions"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": "foundations-neural-computation",
+      "name": "Neural Computation Basics",
+      "phaseId": "phase-1",
+      "order": 1,
+      "topicIds": [
+        "nn-weights-operations",
+        "nn-training-loop"
+      ]
+    },
+    {
+      "id": "foundations-text-representations",
+      "name": "Tokens and Representations",
+      "phaseId": "phase-1",
+      "order": 2,
+      "topicIds": [
+        "llm-tokenization",
+        "llm-embeddings"
+      ]
+    },
+    {
+      "id": "transformer-attention-core",
+      "name": "Transformer Structure and Attention",
+      "phaseId": "phase-2",
+      "order": 3,
+      "topicIds": [
+        "llm-transformer-block",
+        "llm-transformer-attention",
+        "llm-heads-positions"
+      ]
+    },
+    {
+      "id": "transformer-outputs-generation",
+      "name": "From Transformer Blocks to Generation",
+      "phaseId": "phase-2",
+      "order": 4,
+      "topicIds": [
+        "llm-ffn-residual",
+        "llm-generation"
+      ]
+    },
+    {
+      "id": "inference-decoding-cache",
+      "name": "Prefill, Decode and KV Cache",
+      "phaseId": "phase-3",
+      "order": 5,
+      "topicIds": [
+        "infer-prefill-decode",
+        "infer-kv-cache"
+      ]
+    },
+    {
+      "id": "inference-context-performance",
+      "name": "Context Costs and Performance Metrics",
+      "phaseId": "phase-3",
+      "order": 6,
+      "topicIds": [
+        "infer-context-limits",
+        "infer-metrics"
+      ]
+    },
+    {
+      "id": "hardware-compute-memory",
+      "name": "AI Hardware and Bottlenecks",
+      "phaseId": "phase-4",
+      "order": 7,
+      "topicIds": [
+        "hardware-cpu-gpu",
+        "hardware-roofline"
+      ]
+    },
+    {
+      "id": "local-models-quantization",
+      "name": "Local Models and Quantization",
+      "phaseId": "phase-4",
+      "order": 8,
+      "topicIds": [
+        "local-model-choice",
+        "local-formats-quantization",
+        "local-quant-comparison"
+      ]
+    },
+    {
+      "id": "serving-batching-memory",
+      "name": "Batching and KV Memory Management",
+      "phaseId": "phase-5",
+      "order": 9,
+      "topicIds": [
+        "serve-batching",
+        "serve-paged-kv"
+      ]
+    },
+    {
+      "id": "serving-runtimes-scheduling",
+      "name": "Inference Runtimes and Scheduling",
+      "phaseId": "phase-5",
+      "order": 10,
+      "topicIds": [
+        "serve-runtimes",
+        "serve-scheduling"
+      ]
+    },
+    {
+      "id": "adaptation-foundations",
+      "name": "Supervised Adaptation and Adapters",
+      "phaseId": "phase-6",
+      "order": 11,
+      "topicIds": [
+        "adapt-sft-data",
+        "adapt-lora-qlora"
+      ]
+    },
+    {
+      "id": "adaptation-trials-preferences",
+      "name": "Adaptation Trials and Preferences",
+      "phaseId": "phase-6",
+      "order": 12,
+      "topicIds": [
+        "adapt-guided-trial",
+        "adapt-preferences-dpo"
+      ]
+    },
+    {
+      "id": "evidence-quality-benchmarks",
+      "name": "Model Quality and Performance Evidence",
+      "phaseId": "phase-7",
+      "order": 13,
+      "topicIds": [
+        "eval-task-quality",
+        "eval-performance"
+      ]
+    },
+    {
+      "id": "evidence-reliability-decisions",
+      "name": "Grounded Reliability and Engineering Choices",
+      "phaseId": "phase-7",
+      "order": 14,
+      "topicIds": [
+        "eval-rag-depth",
+        "eval-structured-reliability",
+        "eval-synthesis"
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "id": "nn-weights-operations",
+      "name": "Weights, activations and matrix operations",
+      "moduleId": "foundations-neural-computation",
+      "phaseId": "phase-1",
+      "why": "Inference executes fixed learned weights on changing activations; this distinction grounds memory and compute reasoning.",
+      "outcomes": "weights versus activations; linear layer as matrix multiplication; why a nonlinearity matters.",
+      "prerequisites": [],
+      "prerequisiteText": "Basic algebra intuition.",
+      "recommendedPrior": "",
+      "primaryResourceId": "nn-weights-operations:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "nn-weights-operations:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "nn-weights-operations:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "nn-weights-operations:practice",
+        "required": true,
+        "instructions": "Multiply a two-input vector by a 2×2 weight matrix on paper or in Python; alter one weight. Free, CPU only."
+      },
+      "completionCheck": "Identify which values persist across requests and which depend on input.",
+      "nextHint": "`nn-training-loop`."
+    },
+    {
+      "id": "nn-training-loop",
+      "name": "Loss, gradients and training versus inference",
+      "moduleId": "foundations-neural-computation",
+      "phaseId": "phase-1",
+      "why": "Adaptation changes weights; ordinary generation does not.",
+      "outcomes": "loss, gradient descent and backpropagation conceptually; train/eval modes; held-out data.",
+      "prerequisites": [
+        "nn-weights-operations"
+      ],
+      "prerequisiteText": "`nn-weights-operations`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "nn-training-loop:primary-1",
+      "supportingResourceIds": [
+        "nn-training-loop:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "nn-training-loop:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "nn-training-loop:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "nn-training-loop:practice",
+        "required": true,
+        "instructions": "Diagram one training step and one inference pass, marking gradients and updates. Free, no hardware."
+      },
+      "completionCheck": "Explain why a prompt at inference time does not itself update weights.",
+      "nextHint": "`llm-tokenization`."
+    },
+    {
+      "id": "llm-tokenization",
+      "name": "Tokens, vocabularies and context",
+      "moduleId": "foundations-text-representations",
+      "phaseId": "phase-1",
+      "why": "Token boundaries determine sequence length, context use and generation granularity.",
+      "outcomes": "text versus token IDs; subword/byte segmentation; special tokens and chat templates.",
+      "prerequisites": [
+        "nn-weights-operations"
+      ],
+      "prerequisiteText": "`nn-weights-operations`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "llm-tokenization:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "llm-tokenization:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "llm-tokenization:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "llm-tokenization:practice",
+        "required": true,
+        "instructions": "Compare code, punctuation and multilingual text in the browser tokenizer; estimate effects on context. Free."
+      },
+      "completionCheck": "Explain why character count differs from token count and what a special token can signal.",
+      "nextHint": "`llm-embeddings`."
+    },
+    {
+      "id": "llm-embeddings",
+      "name": "Token embeddings and hidden states",
+      "moduleId": "foundations-text-representations",
+      "phaseId": "phase-1",
+      "why": "Initial token vectors are learned lookups; later layers make them contextual, unlike standalone retrieval embeddings.",
+      "outcomes": "embedding-table lookup; vector dimension; position information; token versus contextual versus sentence embedding.",
+      "prerequisites": [
+        "llm-tokenization",
+        "nn-weights-operations"
+      ],
+      "prerequisiteText": "`llm-tokenization`, `nn-weights-operations`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "llm-embeddings:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "llm-embeddings:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "llm-embeddings:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "llm-embeddings:practice",
+        "required": true,
+        "instructions": "Trace one token ID into a vector and sketch what later layers change. Free browser; live model may need a capable desktop browser."
+      },
+      "completionCheck": "Distinguish tokenizer ID, token vector and retrieval embedding.",
+      "nextHint": "`llm-transformer-block`."
+    },
+    {
+      "id": "llm-transformer-block",
+      "name": "Decoder-only block and forward pass",
+      "moduleId": "transformer-attention-core",
+      "phaseId": "phase-2",
+      "why": "An inference runtime repeatedly executes this path, which explains behavior and cost.",
+      "outcomes": "embedding → repeated blocks → output projection; attention versus feed-forward network (FFN); residual and normalization roles.",
+      "prerequisites": [
+        "llm-embeddings"
+      ],
+      "prerequisiteText": "`llm-embeddings`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "llm-transformer-block:primary-1",
+      "supportingResourceIds": [
+        "llm-transformer-block:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "llm-transformer-block:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "llm-transformer-block:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "llm-transformer-block:practice",
+        "required": true,
+        "instructions": "Draw one decoder-only pass and mark which operations mix information across tokens. Free browser."
+      },
+      "completionCheck": "Trace the pass including FFN, residual path and output head.",
+      "nextHint": "`llm-transformer-attention`."
+    },
+    {
+      "id": "llm-transformer-attention",
+      "name": "Causal self-attention",
+      "moduleId": "transformer-attention-core",
+      "phaseId": "phase-2",
+      "why": "Attention explains how earlier tokens affect a token and why context length costs grow.",
+      "outcomes": "Q/K/V projections; scores, scaling, softmax and value mixing; causal mask.",
+      "prerequisites": [
+        "llm-transformer-block"
+      ],
+      "prerequisiteText": "`llm-transformer-block`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "llm-transformer-attention:primary-1",
+      "supportingResourceIds": [
+        "llm-transformer-attention:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "llm-transformer-attention:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "llm-transformer-attention:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "llm-transformer-attention:practice",
+        "required": true,
+        "instructions": "Compare attention maps for two short prompts and calculate a two-token weighted sum. Free browser/paper."
+      },
+      "completionCheck": "Explain causal masking and what attention weights do, without treating them as a complete account of reasoning.",
+      "nextHint": "`llm-heads-positions`."
+    },
+    {
+      "id": "llm-heads-positions",
+      "name": "Multiple heads, positions and GQA",
+      "moduleId": "transformer-attention-core",
+      "phaseId": "phase-2",
+      "why": "Architecture choices alter both representations and KV-cache size.",
+      "outcomes": "head splitting; positional encoding and RoPE conceptually; multi-head versus grouped-query attention (GQA); query versus KV-head count.",
+      "prerequisites": [
+        "llm-transformer-attention"
+      ],
+      "prerequisiteText": "`llm-transformer-attention`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "llm-heads-positions:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "llm-heads-positions:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "llm-heads-positions:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "llm-heads-positions:practice",
+        "required": true,
+        "instructions": "Compare displayed head layouts and calculate the ratio of KV-head counts with dimensions fixed. Free browser."
+      },
+      "completionCheck": "Explain why fewer KV heads reduce cache memory without removing query heads.",
+      "nextHint": "`llm-ffn-residual`."
+    },
+    {
+      "id": "llm-ffn-residual",
+      "name": "FFN, normalization and residual path",
+      "moduleId": "transformer-outputs-generation",
+      "phaseId": "phase-2",
+      "why": "Attention is only part of a block; FFN weights and normalization matter to memory and training.",
+      "outcomes": "token-wise FFN versus cross-token attention; nonlinear activation; residual addition; pre-norm/post-norm variants.",
+      "prerequisites": [
+        "llm-transformer-block",
+        "llm-transformer-attention"
+      ],
+      "prerequisiteText": "`llm-transformer-block`, `llm-transformer-attention`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "llm-ffn-residual:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "llm-ffn-residual:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "llm-ffn-residual:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "llm-ffn-residual:practice",
+        "required": true,
+        "instructions": "Annotate token-mixing and token-wise operations on a block diagram. Free browser."
+      },
+      "completionCheck": "Explain what the FFN contributes and why a residual path exists.",
+      "nextHint": "`llm-generation`."
+    },
+    {
+      "id": "llm-generation",
+      "name": "Logits, sampling and autoregressive generation",
+      "moduleId": "transformer-outputs-generation",
+      "phaseId": "phase-2",
+      "why": "Decoding settings change output behavior while the model predicts one distribution per step.",
+      "outcomes": "logits/softmax; greedy, temperature, top-k and top-p; feeding back chosen tokens; stopping.",
+      "prerequisites": [
+        "llm-tokenization",
+        "llm-transformer-attention",
+        "llm-ffn-residual"
+      ],
+      "prerequisiteText": "`llm-tokenization`, `llm-transformer-attention`, `llm-ffn-residual`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "llm-generation:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "llm-generation:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "llm-generation:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "llm-generation:practice",
+        "required": true,
+        "instructions": "Hold a prompt fixed and vary one sampling control at a time; note probability changes. Free browser."
+      },
+      "completionCheck": "Trace two generation steps and explain why lower temperature alone does not ensure factuality.",
+      "nextHint": "`infer-prefill-decode`."
+    },
+    {
+      "id": "infer-prefill-decode",
+      "name": "Prefill and decoding",
+      "moduleId": "inference-decoding-cache",
+      "phaseId": "phase-3",
+      "why": "Prompt processing and generation stress different hardware resources.",
+      "outcomes": "parallel prompt prefill; sequential decode; time to first token (TTFT); effects of input/output length.",
+      "prerequisites": [
+        "llm-generation"
+      ],
+      "prerequisiteText": "`llm-generation`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "infer-prefill-decode:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "infer-prefill-decode:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "infer-prefill-decode:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "infer-prefill-decode:practice",
+        "required": true,
+        "instructions": "Change input/output lengths, predict which phase grows, and sketch a timeline. Free browser."
+      },
+      "completionCheck": "Explain why long prompts and long responses have different bottlenecks.",
+      "nextHint": "`infer-kv-cache`."
+    },
+    {
+      "id": "infer-kv-cache",
+      "name": "KV cache and reuse",
+      "moduleId": "inference-decoding-cache",
+      "phaseId": "phase-3",
+      "why": "Caching avoids recomputation while consuming memory that grows with live tokens and requests.",
+      "outcomes": "stored keys/values; cache creation and extension; avoided work; dependencies on layers, KV heads, context and batch.",
+      "prerequisites": [
+        "infer-prefill-decode",
+        "llm-heads-positions"
+      ],
+      "prerequisiteText": "`infer-prefill-decode`, `llm-heads-positions`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "infer-kv-cache:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "infer-kv-cache:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "infer-kv-cache:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "infer-kv-cache:practice",
+        "required": true,
+        "instructions": "Use the page's formula to estimate KV bytes for a hypothetical model, stating assumptions. Free calculator."
+      },
+      "completionCheck": "Explain how caching can improve latency yet reduce concurrency capacity.",
+      "nextHint": "`infer-context-limits`."
+    },
+    {
+      "id": "infer-context-limits",
+      "name": "Context scaling and attention I/O",
+      "moduleId": "inference-context-performance",
+      "phaseId": "phase-3",
+      "why": "Long contexts increase attention work, KV occupancy and memory movement.",
+      "outcomes": "standard prefill score matrix; linear KV growth; work versus HBM traffic; FlashAttention tiling.",
+      "prerequisites": [
+        "llm-transformer-attention",
+        "infer-kv-cache"
+      ],
+      "prerequisiteText": "`llm-transformer-attention`, `infer-kv-cache`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "infer-context-limits:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "infer-context-limits:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "infer-context-limits:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "infer-context-limits:practice",
+        "required": true,
+        "instructions": "Sketch full-matrix versus tiled data movement for a short sequence. Free browser/paper."
+      },
+      "completionCheck": "Explain why FlashAttention does not make attention's arithmetic cost linear in context length.",
+      "nextHint": "`infer-metrics`."
+    },
+    {
+      "id": "infer-metrics",
+      "name": "Latency and throughput",
+      "moduleId": "inference-context-performance",
+      "phaseId": "phase-3",
+      "why": "An optimization matters only for a specified workload and metric.",
+      "outcomes": "TTFT, inter-token delay and tokens/second; throughput versus request latency; warmup/repetition; prompt versus generation metrics.",
+      "prerequisites": [
+        "infer-prefill-decode",
+        "infer-kv-cache"
+      ],
+      "prerequisiteText": "`infer-prefill-decode`, `infer-kv-cache`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "infer-metrics:primary-1",
+      "supportingResourceIds": [
+        "infer-metrics:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "infer-metrics:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "infer-metrics:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "infer-metrics:practice",
+        "required": true,
+        "instructions": "Draft a comparison sheet with model, device, token counts, warmup, repetitions and metrics. Free."
+      },
+      "completionCheck": "Name the metric for first response versus capacity and what `llama-bench` omits.",
+      "nextHint": "`hardware-cpu-gpu`."
+    },
+    {
+      "id": "hardware-cpu-gpu",
+      "name": "CPU, GPU and memory hierarchy",
+      "moduleId": "hardware-compute-memory",
+      "phaseId": "phase-4",
+      "why": "Hardware placement constrains model size and performance.",
+      "outcomes": "CPU latency versus GPU throughput orientation; compute units, RAM and VRAM/HBM; data movement.",
+      "prerequisites": [
+        "nn-weights-operations",
+        "infer-prefill-decode"
+      ],
+      "prerequisiteText": "`nn-weights-operations`, `infer-prefill-decode`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "hardware-cpu-gpu:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "hardware-cpu-gpu:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "hardware-cpu-gpu:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "hardware-cpu-gpu:practice",
+        "required": true,
+        "instructions": "Draw weights, activations and KV locations for CPU-only and GPU-loaded inference. Free."
+      },
+      "completionCheck": "Explain why capacity and bandwidth can dominate peak arithmetic throughput.",
+      "nextHint": "`hardware-roofline`."
+    },
+    {
+      "id": "hardware-roofline",
+      "name": "Compute-bound versus memory-bound work",
+      "moduleId": "hardware-compute-memory",
+      "phaseId": "phase-4",
+      "why": "Choose batching, smaller weights or faster compute according to the bottleneck.",
+      "outcomes": "FLOPs, bytes and arithmetic intensity; roofline as an upper bound; batch effects.",
+      "prerequisites": [
+        "hardware-cpu-gpu",
+        "infer-prefill-decode"
+      ],
+      "prerequisiteText": "`hardware-cpu-gpu`, `infer-prefill-decode`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "hardware-roofline:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "hardware-roofline:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "hardware-roofline:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "hardware-roofline:practice",
+        "required": true,
+        "instructions": "Vary compute and bytes in the simulator; predict which optimization class helps. Free browser."
+      },
+      "completionCheck": "Give one bandwidth-bound and one compute-bound example with assumptions.",
+      "nextHint": "`local-model-choice`."
+    },
+    {
+      "id": "local-model-choice",
+      "name": "Select and run a small open-weight model",
+      "moduleId": "local-models-quantization",
+      "phaseId": "phase-4",
+      "why": "Architecture, license, tokenizer, context, format and device fit are real engineering inputs.",
+      "outcomes": "parameters versus weight-memory estimate; base versus instruction model; model card/license; RAM/VRAM plus KV overhead.",
+      "prerequisites": [
+        "llm-generation",
+        "hardware-cpu-gpu"
+      ],
+      "prerequisiteText": "`llm-generation`, `hardware-cpu-gpu`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "local-model-choice:primary-1",
+      "supportingResourceIds": [
+        "local-model-choice:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "local-model-choice:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "local-model-choice:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "local-model-choice:practice",
+        "required": true,
+        "instructions": "Inspect a current model card/license, then run a small legal GGUF instruction model with `llama.cpp` on CPU or available accelerator. No API fee; RAM, disk and download required. Fallback: calculate fit from model cards without downloading."
+      },
+      "completionCheck": "Record model/revision, format, device and context; explain fit.",
+      "nextHint": "`local-formats-quantization`."
+    },
+    {
+      "id": "local-formats-quantization",
+      "name": "Formats and quantized numbers",
+      "moduleId": "local-models-quantization",
+      "phaseId": "phase-4",
+      "why": "Packaging and numeric precision shape compatibility, memory and quality.",
+      "outcomes": "GGUF versus framework checkpoint; FP16/BF16 versus low-bit weights; rounding/scale error; weight versus KV/activation memory.",
+      "prerequisites": [
+        "local-model-choice",
+        "hardware-roofline"
+      ],
+      "prerequisiteText": "`local-model-choice`, `hardware-roofline`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "local-formats-quantization:primary-1",
+      "supportingResourceIds": [
+        "local-formats-quantization:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "local-formats-quantization:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "local-formats-quantization:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "local-formats-quantization:practice",
+        "required": true,
+        "instructions": "Enter an outlier and a small value; estimate weights-only storage at two precisions. Free browser/calculator."
+      },
+      "completionCheck": "Explain why fewer bits need not always improve speed or preserve task quality.",
+      "nextHint": "`local-quant-comparison`."
+    },
+    {
+      "id": "local-quant-comparison",
+      "name": "Compare quantization choices",
+      "moduleId": "local-models-quantization",
+      "phaseId": "phase-4",
+      "why": "Bit width alone cannot settle fit, speed or quality for a real workload.",
+      "outcomes": "weight-only versus weight-and-activation quantization; model-specific sensitivity; controlled comparisons.",
+      "prerequisites": [
+        "local-formats-quantization",
+        "infer-metrics"
+      ],
+      "prerequisiteText": "`local-formats-quantization`, `infer-metrics`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "local-quant-comparison:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "local-quant-comparison:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "local-quant-comparison:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "local-quant-comparison:practice",
+        "required": true,
+        "instructions": "If two GGUF variants fit, use identical prompts/settings and record file size, RAM, prompt/generation speed and output differences. Free local compute. Fallback: compare sizes and memory estimates without asserting quality/speed."
+      },
+      "completionCheck": "Make one evidence-backed format choice and state what it cannot establish.",
+      "nextHint": "`serve-batching`."
+    },
+    {
+      "id": "serve-batching",
+      "name": "Static and continuous batching",
+      "moduleId": "serving-batching-memory",
+      "phaseId": "phase-5",
+      "why": "Concurrent requests make generation a scheduling problem.",
+      "outcomes": "padding and idle slots; iteration-level admission; throughput/latency tradeoff; queueing.",
+      "prerequisites": [
+        "infer-prefill-decode",
+        "infer-metrics"
+      ],
+      "prerequisiteText": "`infer-prefill-decode`, `infer-metrics`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "serve-batching:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "serve-batching:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "serve-batching:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "serve-batching:practice",
+        "required": true,
+        "instructions": "Step through different-length requests and count idle slots. Free browser."
+      },
+      "completionCheck": "Explain why continuous batching helps and how contention can still hurt latency.",
+      "nextHint": "`serve-paged-kv`."
+    },
+    {
+      "id": "serve-paged-kv",
+      "name": "Paged KV memory and prefix reuse",
+      "moduleId": "serving-batching-memory",
+      "phaseId": "phase-5",
+      "why": "Serving capacity depends on allocating growing caches across requests.",
+      "outcomes": "logical-to-physical blocks; fragmentation; sharing/copy-on-write; prefix-cache benefit and occupancy cost.",
+      "prerequisites": [
+        "infer-kv-cache",
+        "serve-batching"
+      ],
+      "prerequisiteText": "`infer-kv-cache`, `serve-batching`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "serve-paged-kv:primary-1",
+      "supportingResourceIds": [
+        "serve-paged-kv:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "serve-paged-kv:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "serve-paged-kv:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "serve-paged-kv:practice",
+        "required": true,
+        "instructions": "Map two shared-prefix sequences to logical/physical blocks and show a copy-on-write point. Free."
+      },
+      "completionCheck": "Explain how paging avoids wasted reservation without shrinking stored KV.",
+      "nextHint": "`serve-runtimes`."
+    },
+    {
+      "id": "serve-runtimes",
+      "name": "Runtime and vLLM anatomy",
+      "moduleId": "serving-runtimes-scheduling",
+      "phaseId": "phase-5",
+      "why": "Engines combine model loading, scheduling, kernels, KV management and an API.",
+      "outcomes": "scheduler/worker/KV manager responsibilities; vLLM batching/paging; `llama.cpp` versus vLLM/SGLang roles.",
+      "prerequisites": [
+        "serve-paged-kv"
+      ],
+      "prerequisiteText": "`serve-paged-kv`.",
+      "recommendedPrior": "`local-model-choice` for comparing a runtime with a real local setup.",
+      "primaryResourceId": "serve-runtimes:primary-1",
+      "supportingResourceIds": [
+        "serve-runtimes:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "serve-runtimes:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "serve-runtimes:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "serve-runtimes:practice",
+        "required": true,
+        "instructions": "Compare a local `llama.cpp` setup with conceptual vLLM components. Optional vLLM trial only on compatible hardware; no GPU required for completion and free notebook GPU access is uncertain."
+      },
+      "completionCheck": "Locate request admission and KV allocation; give one reason to choose each runtime.",
+      "nextHint": "`serve-scheduling`."
+    },
+    {
+      "id": "serve-scheduling",
+      "name": "Prefill interference and serving policy",
+      "moduleId": "serving-runtimes-scheduling",
+      "phaseId": "phase-5",
+      "why": "Long prompts can stall ongoing decodes even when overall throughput looks good.",
+      "outcomes": "prefill/decode interference; chunked prefill; TTFT versus inter-token goals; disaggregation costs.",
+      "prerequisites": [
+        "serve-batching",
+        "infer-prefill-decode"
+      ],
+      "prerequisiteText": "`serve-batching`, `infer-prefill-decode`.",
+      "recommendedPrior": "`serve-runtimes` for placement decisions.",
+      "primaryResourceId": "serve-scheduling:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "serve-scheduling:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "serve-scheduling:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "serve-scheduling:practice",
+        "required": true,
+        "instructions": "Schedule one long new prompt alongside two decodes under two policies. Free paper/browser."
+      },
+      "completionCheck": "State a latency/throughput tradeoff and the cost of separate prefill/decode pools.",
+      "nextHint": "`adapt-sft-data`."
+    },
+    {
+      "id": "adapt-sft-data",
+      "name": "Pretraining, SFT and adaptation data",
+      "moduleId": "adaptation-foundations",
+      "phaseId": "phase-6",
+      "why": "Fine-tuning needs a defined behavior, suitable examples and evaluation target.",
+      "outcomes": "pretraining versus supervised fine-tuning (SFT); prompt/response data and chat templates; train/validation split; when prompting or RAG is preferable.",
+      "prerequisites": [
+        "nn-training-loop",
+        "llm-generation"
+      ],
+      "prerequisiteText": "`nn-training-loop`, `llm-generation`.",
+      "recommendedPrior": "`local-model-choice` before selecting a model for an experiment.",
+      "primaryResourceId": "adapt-sft-data:primary-1",
+      "supportingResourceIds": [
+        "adapt-sft-data:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "adapt-sft-data:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "adapt-sft-data:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "adapt-sft-data:practice",
+        "required": true,
+        "instructions": "Specify one narrow behavior and draft synthetic train/held-out examples; identify leakage. Free."
+      },
+      "completionCheck": "Explain what SFT changes and why the test split must stay separate.",
+      "nextHint": "`adapt-lora-qlora`."
+    },
+    {
+      "id": "adapt-lora-qlora",
+      "name": "LoRA and QLoRA mechanics",
+      "moduleId": "adaptation-foundations",
+      "phaseId": "phase-6",
+      "why": "Adapters train fewer parameters; a quantized frozen base reduces training memory.",
+      "outcomes": "frozen base plus low-rank update; rank; QLoRA; training memory beyond weights.",
+      "prerequisites": [
+        "adapt-sft-data",
+        "local-formats-quantization"
+      ],
+      "prerequisiteText": "`adapt-sft-data`, `local-formats-quantization`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "adapt-lora-qlora:primary-1",
+      "supportingResourceIds": [
+        "adapt-lora-qlora:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "adapt-lora-qlora:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "adapt-lora-qlora:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "adapt-lora-qlora:practice",
+        "required": true,
+        "instructions": "Sketch `W + AB`, mark trained/frozen parts, and estimate adapter parameters for two ranks. Free calculator."
+      },
+      "completionCheck": "Explain why QLoRA is a training setup, not just running 4-bit inference.",
+      "nextHint": "`adapt-guided-trial`."
+    },
+    {
+      "id": "adapt-guided-trial",
+      "name": "Guided adaptation and baseline",
+      "moduleId": "adaptation-trials-preferences",
+      "phaseId": "phase-6",
+      "why": "A fine-tuning claim needs held-out comparison with a baseline.",
+      "outcomes": "a held-out baseline and evaluation rubric; adapter artifact; overfitting and formatting failures; hardware/data constraints.",
+      "prerequisites": [
+        "adapt-sft-data",
+        "adapt-lora-qlora"
+      ],
+      "prerequisiteText": "`adapt-sft-data`, `adapt-lora-qlora`.",
+      "recommendedPrior": "Preview the rubric in `eval-task-quality` before the trial; this later topic is not a gate.",
+      "primaryResourceId": "adapt-guided-trial:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "adapt-guided-trial:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "adapt-guided-trial:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "adapt-guided-trial:practice",
+        "required": true,
+        "instructions": "**Baseline → Adaptation → Re-evaluation → Engineering conclusion.** First define a held-out task set, scoring rubric and baseline evaluation plan using `eval-task-quality` concepts. If compatible hardware is available, record original-model results, run a small LoRA/QLoRA adaptation, test the adapted model on the same held-out cases and settings, then explain differences and limits. A free notebook GPU may be unavailable; check quota, model license and memory before running. Without hardware, inspect the workflow and write an explicitly unexecuted plan and comparison table."
+      },
+      "completionCheck": "**Conceptual completion:** Explain the data split, baseline, training, re-evaluation and adaptation decision; label all planned results unmeasured. **Hands-on completion (optional without compatible hardware):** Show an actual adapter run, original and adapted model results on the same held-out set, and an engineering conclusion. A plan alone never counts as a completed experiment.",
+      "nextHint": "`adapt-preferences-dpo`."
+    },
+    {
+      "id": "adapt-preferences-dpo",
+      "name": "Preference data and DPO",
+      "moduleId": "adaptation-trials-preferences",
+      "phaseId": "phase-6",
+      "why": "Preference optimization uses comparative quality labels after SFT.",
+      "outcomes": "prompt/chosen/rejected triples; reference policy and DPO concept; contrast with reward-model RLHF; label bias.",
+      "prerequisites": [
+        "adapt-sft-data"
+      ],
+      "prerequisiteText": "`adapt-sft-data`.",
+      "recommendedPrior": "`adapt-lora-qlora` for a later parameter-efficient DPO run.",
+      "primaryResourceId": "adapt-preferences-dpo:primary-1",
+      "supportingResourceIds": [
+        "adapt-preferences-dpo:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "adapt-preferences-dpo:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "adapt-preferences-dpo:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "adapt-preferences-dpo:practice",
+        "required": true,
+        "instructions": "Draft three preference pairs and find an ambiguous label. Free; training optional/advanced."
+      },
+      "completionCheck": "Explain what pairwise labels add beyond SFT and what a bad pair teaches.",
+      "nextHint": "`eval-task-quality`."
+    },
+    {
+      "id": "eval-task-quality",
+      "name": "Task-specific quality evaluation",
+      "moduleId": "evidence-quality-benchmarks",
+      "phaseId": "phase-7",
+      "why": "Generic benchmarks rarely answer whether a model meets a particular use case.",
+      "outcomes": "task set/rubric; held-out cases and leakage; human versus model judge; paired comparison and failure categories.",
+      "prerequisites": [
+        "llm-generation"
+      ],
+      "prerequisiteText": "`llm-generation`.",
+      "recommendedPrior": "`local-model-choice` for a local comparison; `adapt-sft-data` only when evaluating an adapted model.",
+      "primaryResourceId": "eval-task-quality:primary-1",
+      "supportingResourceIds": [
+        "eval-task-quality:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "eval-task-quality:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "eval-task-quality:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "eval-task-quality:practice",
+        "required": true,
+        "instructions": "Create a small private/synthetic held-out set and manually score two variants. Free if a local model runs; fallback: design and review rubric."
+      },
+      "completionCheck": "Categorize failures and state the limits of a small sample.",
+      "nextHint": "`eval-performance`."
+    },
+    {
+      "id": "eval-performance",
+      "name": "Reproducible benchmarking",
+      "moduleId": "evidence-quality-benchmarks",
+      "phaseId": "phase-7",
+      "why": "Speed and memory tuning require a defined workload.",
+      "outcomes": "warmup/repetition; fixed model/prompt/settings; prompt versus generation rate; latency percentiles and concurrency.",
+      "prerequisites": [
+        "infer-metrics"
+      ],
+      "prerequisiteText": "`infer-metrics`.",
+      "recommendedPrior": "`local-model-choice` for a runnable benchmark; `local-quant-comparison` or `serve-batching` when comparing those configurations.",
+      "primaryResourceId": "eval-performance:primary-1",
+      "supportingResourceIds": [
+        "eval-performance:supporting-1"
+      ],
+      "activities": [
+        {
+          "id": "eval-performance:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "eval-performance:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "eval-performance:practice",
+        "required": true,
+        "instructions": "Repeat local prompt-processing/generation tests with setup and variation recorded. Free CPU acceptable. Fallback: unexecuted protocol. TTFT needs separate end-to-end timing."
+      },
+      "completionCheck": "Present results with units/setup/limits, or clearly label a protocol unexecuted.",
+      "nextHint": "`eval-rag-depth`."
+    },
+    {
+      "id": "eval-rag-depth",
+      "name": "Retrieval quality and grounded answers",
+      "moduleId": "evidence-reliability-decisions",
+      "phaseId": "phase-7",
+      "why": "Existing RAG experience benefits from separating retrieval failures from answer failures and comparing adaptation.",
+      "outcomes": "relevance versus faithfulness; missing evidence versus misuse; context/latency cost; RAG versus SFT remedies.",
+      "prerequisites": [
+        "eval-task-quality"
+      ],
+      "prerequisiteText": "`eval-task-quality`.",
+      "recommendedPrior": "`infer-context-limits` when investigating context-budget costs.",
+      "primaryResourceId": "eval-rag-depth:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "eval-rag-depth:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "eval-rag-depth:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "eval-rag-depth:practice",
+        "required": true,
+        "instructions": "Reuse an existing RAG pipeline or paper example; manually mark relevant chunks and answer support for a few queries. Free, no judge API."
+      },
+      "completionCheck": "Diagnose one retrieval and one generation failure with different remedies.",
+      "nextHint": "`eval-structured-reliability`."
+    },
+    {
+      "id": "eval-structured-reliability",
+      "name": "Structured output, tools and reliability",
+      "moduleId": "evidence-reliability-decisions",
+      "phaseId": "phase-7",
+      "why": "Valid syntax differs from correct tool choice, arguments and content.",
+      "outcomes": "constrained decoding and token masking; tool call versus execution; validation, retry and semantic checks.",
+      "prerequisites": [
+        "llm-generation"
+      ],
+      "prerequisiteText": "`llm-generation`.",
+      "recommendedPrior": "`eval-task-quality` for testing semantic correctness.",
+      "primaryResourceId": "eval-structured-reliability:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "eval-structured-reliability:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "eval-structured-reliability:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "eval-structured-reliability:practice",
+        "required": true,
+        "instructions": "Define a JSON schema and three syntactically valid but operationally wrong outputs; optionally test a local engine. Free."
+      },
+      "completionCheck": "Explain what constrained decoding guarantees and what application validation still must check.",
+      "nextHint": "`eval-synthesis`."
+    },
+    {
+      "id": "eval-synthesis",
+      "name": "Engineering decision record",
+      "moduleId": "evidence-reliability-decisions",
+      "phaseId": "phase-7",
+      "why": "The final skill is choosing feasible model, runtime and adaptation/evaluation strategies under constraints.",
+      "outcomes": "quality/latency/memory/cost; evidence versus assumptions; license/privacy; baseline-to-improvement path.",
+      "prerequisites": [
+        "eval-task-quality",
+        "eval-performance",
+        "eval-rag-depth",
+        "eval-structured-reliability",
+        "serve-runtimes"
+      ],
+      "prerequisiteText": "`eval-task-quality`, `eval-performance`, `eval-rag-depth`, `eval-structured-reliability`, `serve-runtimes`.",
+      "recommendedPrior": "",
+      "primaryResourceId": "eval-synthesis:primary-1",
+      "supportingResourceIds": [],
+      "activities": [
+        {
+          "id": "eval-synthesis:study-primary",
+          "label": "Review the primary resource and learning objectives",
+          "required": true,
+          "type": "study",
+          "resourceId": "eval-synthesis:primary-1"
+        }
+      ],
+      "practice": {
+        "id": "eval-synthesis:practice",
+        "required": true,
+        "instructions": "Write a one-page choice for a narrow use case, using measurements if available and labeling untested assumptions. No repo/deployment/paid API required."
+      },
+      "completionCheck": "Defend a choice with evidence and limitations; name the next test that could change it.",
+      "nextHint": "An optional deep dive or weak prerequisite."
+    }
+  ],
+  "resources": [
+    {
+      "id": "nn-weights-operations:primary-1",
+      "title": "3Blue1Brown, But what is a Neural Network?",
+      "url": "https://www.3blue1brown.com/lessons/neural-networks/",
+      "type": "primary",
+      "description": "[3Blue1Brown, But what is a Neural Network?](https://www.3blue1brown.com/lessons/neural-networks/) (animated video/text), which visualizes weights and layer outputs. Its digit classifier is an analogy.",
+      "verification": "Verified, public animated video/text",
+      "caveats": "Passive video, simplified examples; mobile playback untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "nn-training-loop:primary-1",
+      "title": "3Blue1Brown, Gradient descent",
+      "url": "https://www.3blue1brown.com/lessons/gradient-descent/",
+      "type": "primary",
+      "description": "[3Blue1Brown, Gradient descent](https://www.3blue1brown.com/lessons/gradient-descent/) (animated video/text), for an intuitive moving loss surface.",
+      "verification": "Verified, public animated video/text",
+      "caveats": "Passive video, simplified examples; mobile playback untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "nn-training-loop:supporting-1",
+      "title": "Inference Infrastructure, Overview of Training",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m09-training.html",
+      "type": "supporting",
+      "description": "[Inference Infrastructure, Overview of Training](https://datasystem.school/inference-infrastructure-animated-tutorials/m09-training.html), a visual pretraining-to-post-training map.",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-tokenization:primary-1",
+      "title": "Forward Pass, Inside the Transformer, chapter 1",
+      "url": "https://www.forwardpass.dev/transformer",
+      "type": "primary",
+      "description": "[Forward Pass, Inside the Transformer, chapter 1](https://www.forwardpass.dev/transformer) (browser tokenization playground). Select the Tokenization chapter; it shows text becoming IDs.",
+      "verification": "Verified, public browser guides/animations; no API key advertised",
+      "caveats": "Named chapters share one URL and require navigation. Some prices/performance are illustrative or time-sensitive. Mobile untested. [Embeddings](https://forwardpass.dev/embeddings) and [tokenizer training](https://forwardpass.dev/tokenizer-training) were indexed but direct fetch failed: **UNVERIFIED**, not primary recommendations.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-embeddings:primary-1",
+      "title": "Transformer Explainer, Embedding section",
+      "url": "https://poloclub.github.io/transformer-explainer/",
+      "type": "primary",
+      "description": "[Transformer Explainer, Embedding section](https://poloclub.github.io/transformer-explainer/) (browser model visualization), showing token and position embeddings.",
+      "verification": "Verified, public live GPT-2 visualization and controls",
+      "caveats": "124M GPT-2 is older and intentionally small; browser compute and mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-transformer-block:primary-1",
+      "title": "Forward Pass, Architecture Explorer",
+      "url": "https://forwardpass.dev/architectures",
+      "type": "primary",
+      "description": "[Forward Pass, Architecture Explorer](https://forwardpass.dev/architectures) (animated layer explorer). Compare GPT-2 with a displayed modern decoder.",
+      "verification": "Verified, public browser guides/animations; no API key advertised",
+      "caveats": "Named chapters share one URL and require navigation. Some prices/performance are illustrative or time-sensitive. Mobile untested. [Embeddings](https://forwardpass.dev/embeddings) and [tokenizer training](https://forwardpass.dev/tokenizer-training) were indexed but direct fetch failed: **UNVERIFIED**, not primary recommendations.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-transformer-block:supporting-1",
+      "title": "Brendan Bycroft, LLM Visualization",
+      "url": "https://bbycroft.net/llm",
+      "type": "supporting",
+      "description": "[Brendan Bycroft, LLM Visualization](https://bbycroft.net/llm) (3D visualization; live walkthrough controls unverified here).",
+      "verification": "Partially verified, 3D project and URL/title; live steps UNVERIFIED",
+      "caveats": "Public; text extraction exposed only title, so optional support only. Mobile/WebGL behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-transformer-attention:primary-1",
+      "title": "Transformer Explainer, Multi-Head Self-Attention section",
+      "url": "https://poloclub.github.io/transformer-explainer/",
+      "type": "primary",
+      "description": "[Transformer Explainer, Multi-Head Self-Attention section](https://poloclub.github.io/transformer-explainer/) (interactive attention maps and worked calculations) using small GPT-2.",
+      "verification": "Verified, public live GPT-2 visualization and controls",
+      "caveats": "124M GPT-2 is older and intentionally small; browser compute and mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-transformer-attention:supporting-1",
+      "title": "3Blue1Brown, Attention in transformers",
+      "url": "https://www.3blue1brown.com/lessons/attention/",
+      "type": "supporting",
+      "description": "[3Blue1Brown, Attention in transformers](https://www.3blue1brown.com/lessons/attention/) (animated Q/K/V intuition).",
+      "verification": "Verified, public animated video/text",
+      "caveats": "Passive video, simplified examples; mobile playback untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-heads-positions:primary-1",
+      "title": "Inference Infrastructure, LLMs and Transformers",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m01-transformers.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, LLMs and Transformers](https://datasystem.school/inference-infrastructure-animated-tutorials/m01-transformers.html) (step-through MHA/MQA/GQA figures), which link head layouts to KV memory.",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-ffn-residual:primary-1",
+      "title": "Vizuara, Transformer Block Internals",
+      "url": "https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/25_transformer_block.html",
+      "type": "primary",
+      "description": "[Vizuara, Transformer Block Internals](https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/25_transformer_block.html) (clickable block/forward-pass animation); parameter counts are illustrative.",
+      "verification": "Verified via indexed direct pages, public visual guides; index fetch failed in web tool",
+      "caveats": "Some fixed performance/quality claims are oversimplified or time-sensitive. Listed Colab labs not run; free GPU quota uncertain. Mobile/control behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "llm-generation:primary-1",
+      "title": "Transformer Explainer, Output Probabilities and controls",
+      "url": "https://poloclub.github.io/transformer-explainer/",
+      "type": "primary",
+      "description": "[Transformer Explainer, Output Probabilities and controls](https://poloclub.github.io/transformer-explainer/) (live GPT-2 with sampling inputs).",
+      "verification": "Verified, public live GPT-2 visualization and controls",
+      "caveats": "124M GPT-2 is older and intentionally small; browser compute and mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "infer-prefill-decode:primary-1",
+      "title": "Vizuara, Prefill vs Decode",
+      "url": "https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/03_prefill_vs_decode.html",
+      "type": "primary",
+      "description": "[Vizuara, Prefill vs Decode](https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/03_prefill_vs_decode.html) (animated comparison and length sliders). Timelines are simulations, not measurements.",
+      "verification": "Verified via indexed direct pages, public visual guides; index fetch failed in web tool",
+      "caveats": "Some fixed performance/quality claims are oversimplified or time-sensitive. Listed Colab labs not run; free GPU quota uncertain. Mobile/control behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "infer-kv-cache:primary-1",
+      "title": "Inference Infrastructure, Inference and the KV Cache",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m02-kvcache.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Inference and the KV Cache](https://datasystem.school/inference-infrastructure-animated-tutorials/m02-kvcache.html) (four step-through figures contrasting cached/uncached decode).",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "infer-context-limits:primary-1",
+      "title": "Inference Infrastructure, I/O-Aware Kernels",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m05-flashattention.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, I/O-Aware Kernels](https://datasystem.school/inference-infrastructure-animated-tutorials/m05-flashattention.html) (step-through tiling and memory figures), no kernel implementation needed.",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "infer-metrics:primary-1",
+      "title": "Vizuara, Prefill vs Decode, TTFT section",
+      "url": "https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/03_prefill_vs_decode.html",
+      "type": "primary",
+      "description": "[Vizuara, Prefill vs Decode, TTFT section](https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/03_prefill_vs_decode.html) (interactive metric diagram; numbers illustrative).",
+      "verification": "Verified via indexed direct pages, public visual guides; index fetch failed in web tool",
+      "caveats": "Some fixed performance/quality claims are oversimplified or time-sensitive. Listed Colab labs not run; free GPU quota uncertain. Mobile/control behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "infer-metrics:supporting-1",
+      "title": "llama-bench documentation",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/master/tools/llama-bench/README.md",
+      "type": "supporting",
+      "description": "[llama-bench documentation](https://github.com/ggml-org/llama.cpp/blob/master/tools/llama-bench/README.md) (official text defining prompt and generation tests).",
+      "verification": "Verified, official text/runnable CLI",
+      "caveats": "Free source; model license, download, RAM and disk must be checked. Benchmark excludes tokenization/sampling. No command run.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "hardware-cpu-gpu:primary-1",
+      "title": "Inference Infrastructure, GPU Hardware",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m10-hardware.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, GPU Hardware](https://datasystem.school/inference-infrastructure-animated-tutorials/m10-hardware.html) (step-through GPU and memory animations). NVIDIA is an example, not a hardware requirement.",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "hardware-roofline:primary-1",
+      "title": "Vizuara, Compute vs Memory Bound",
+      "url": "https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/07_compute_vs_memory_bound.html",
+      "type": "primary",
+      "description": "[Vizuara, Compute vs Memory Bound](https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/07_compute_vs_memory_bound.html) (interactive roofline sliders). Hardware figures may age.",
+      "verification": "Verified via indexed direct pages, public visual guides; index fetch failed in web tool",
+      "caveats": "Some fixed performance/quality claims are oversimplified or time-sensitive. Listed Colab labs not run; free GPU quota uncertain. Mobile/control behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "local-model-choice:primary-1",
+      "title": "Forward Pass, Architecture Explorer",
+      "url": "https://forwardpass.dev/architectures",
+      "type": "primary",
+      "description": "[Forward Pass, Architecture Explorer](https://forwardpass.dev/architectures) (animated architecture comparison), for inspecting component differences.",
+      "verification": "Verified, public browser guides/animations; no API key advertised",
+      "caveats": "Named chapters share one URL and require navigation. Some prices/performance are illustrative or time-sensitive. Mobile untested. [Embeddings](https://forwardpass.dev/embeddings) and [tokenizer training](https://forwardpass.dev/tokenizer-training) were indexed but direct fetch failed: **UNVERIFIED**, not primary recommendations.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "local-model-choice:supporting-1",
+      "title": "llama.cpp, Obtaining models",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/master/docs/models.md",
+      "type": "supporting",
+      "description": "[llama.cpp, Obtaining models](https://github.com/ggml-org/llama.cpp/blob/master/docs/models.md) (official GGUF/CLI guide).",
+      "verification": "Verified, official text/runnable CLI",
+      "caveats": "Free source; model license, download, RAM and disk must be checked. Benchmark excludes tokenization/sampling. No command run.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "local-formats-quantization:primary-1",
+      "title": "Vizuara, Quantization Number Formats",
+      "url": "https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/19_quantization_formats.html",
+      "type": "primary",
+      "description": "[Vizuara, Quantization Number Formats](https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/19_quantization_formats.html) (interactive bit layouts and number converter). Toy converter is not a model-quality predictor.",
+      "verification": "Verified via indexed direct pages, public visual guides; index fetch failed in web tool",
+      "caveats": "Some fixed performance/quality claims are oversimplified or time-sensitive. Listed Colab labs not run; free GPU quota uncertain. Mobile/control behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "local-formats-quantization:supporting-1",
+      "title": "Forward Pass, Quantization",
+      "url": "https://forwardpass.dev/quantization",
+      "type": "supporting",
+      "description": "[Forward Pass, Quantization](https://forwardpass.dev/quantization) (animated method/tradeoff chapters; displayed prices are not quotations).",
+      "verification": "Verified, public browser guides/animations; no API key advertised",
+      "caveats": "Named chapters share one URL and require navigation. Some prices/performance are illustrative or time-sensitive. Mobile untested. [Embeddings](https://forwardpass.dev/embeddings) and [tokenizer training](https://forwardpass.dev/tokenizer-training) were indexed but direct fetch failed: **UNVERIFIED**, not primary recommendations.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "local-quant-comparison:primary-1",
+      "title": "Forward Pass, Quantization, chapter 5",
+      "url": "https://forwardpass.dev/quantization",
+      "type": "primary",
+      "description": "[Forward Pass, Quantization, chapter 5](https://forwardpass.dev/quantization) (browser chapter controls for quality/size/speed). Treat as a hypothesis, not benchmark evidence.",
+      "verification": "Verified, public browser guides/animations; no API key advertised",
+      "caveats": "Named chapters share one URL and require navigation. Some prices/performance are illustrative or time-sensitive. Mobile untested. [Embeddings](https://forwardpass.dev/embeddings) and [tokenizer training](https://forwardpass.dev/tokenizer-training) were indexed but direct fetch failed: **UNVERIFIED**, not primary recommendations.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "serve-batching:primary-1",
+      "title": "Inference Infrastructure, Batching, Scheduling and Paging",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m04-batching.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Batching, Scheduling and Paging](https://datasystem.school/inference-infrastructure-animated-tutorials/m04-batching.html) (step-through request lanes), starting with static/continuous batching.",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "serve-paged-kv:primary-1",
+      "title": "Inference Infrastructure, Batching, Scheduling and Paging",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m04-batching.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Batching, Scheduling and Paging](https://datasystem.school/inference-infrastructure-animated-tutorials/m04-batching.html) (step-through PagedAttention and sharing figures).",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "serve-paged-kv:supporting-1",
+      "title": "KV Cache Management and Offload",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m08-kvoffload.html",
+      "type": "supporting",
+      "description": "[KV Cache Management and Offload](https://datasystem.school/inference-infrastructure-animated-tutorials/m08-kvoffload.html) for cross-request reuse.",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "serve-runtimes:primary-1",
+      "title": "Inference Infrastructure, Inference Runtimes",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m11-runtimes.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Inference Runtimes](https://datasystem.school/inference-infrastructure-animated-tutorials/m11-runtimes.html) (animated serving stack). Consult current docs for exact support.",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "serve-runtimes:supporting-1",
+      "title": "vLLM hardware/installation",
+      "url": "https://docs.vllm.ai/en/stable/getting_started/installation/",
+      "type": "supporting",
+      "description": "[vLLM hardware/installation](https://docs.vllm.ai/en/stable/getting_started/installation/) (official text).",
+      "verification": "Verified, public official tutorials/docs, mostly text; SFTTrainer section includes illustrations and quiz",
+      "caveats": "Direct SFTTrainer section covers dataset, training configuration, monitoring and post-training evaluation, but does not supply the required pre-training baseline comparison. Actual runs need compatible hardware/packages; free notebook access contingent. `main` docs may differ from installed stable versions. No installation.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "serve-scheduling:primary-1",
+      "title": "Inference Infrastructure, Prefill-Decode Scheduling",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m07-disaggregation.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Prefill-Decode Scheduling](https://datasystem.school/inference-infrastructure-animated-tutorials/m07-disaggregation.html) (step-through timelines; no universally winning policy).",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "adapt-sft-data:primary-1",
+      "title": "Inference Infrastructure, Overview of Training",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m09-training.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Overview of Training](https://datasystem.school/inference-infrastructure-animated-tutorials/m09-training.html) (step-through pretraining/SFT/preference pipeline).",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "adapt-sft-data:supporting-1",
+      "title": "TRL SFT Trainer",
+      "url": "https://huggingface.co/docs/trl/sft_trainer",
+      "type": "supporting",
+      "description": "[TRL SFT Trainer](https://huggingface.co/docs/trl/sft_trainer) (official text on formats/loss).",
+      "verification": "Verified, public official tutorials/docs, mostly text; SFTTrainer section includes illustrations and quiz",
+      "caveats": "Direct SFTTrainer section covers dataset, training configuration, monitoring and post-training evaluation, but does not supply the required pre-training baseline comparison. Actual runs need compatible hardware/packages; free notebook access contingent. `main` docs may differ from installed stable versions. No installation.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "adapt-lora-qlora:primary-1",
+      "title": "Inference Infrastructure, Overview of Training, LoRA figure",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m09-training.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Overview of Training, LoRA figure](https://datasystem.school/inference-infrastructure-animated-tutorials/m09-training.html) (five-step animation and QLoRA note).",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "adapt-lora-qlora:supporting-1",
+      "title": "Hugging Face PEFT, LoRA",
+      "url": "https://huggingface.co/docs/peft/main/en/conceptual_guides/lora",
+      "type": "supporting",
+      "description": "[Hugging Face PEFT, LoRA](https://huggingface.co/docs/peft/main/en/conceptual_guides/lora) (official mechanism).",
+      "verification": "Verified, public official tutorials/docs, mostly text; SFTTrainer section includes illustrations and quiz",
+      "caveats": "Direct SFTTrainer section covers dataset, training configuration, monitoring and post-training evaluation, but does not supply the required pre-training baseline comparison. Actual runs need compatible hardware/packages; free notebook access contingent. `main` docs may differ from installed stable versions. No installation.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "adapt-guided-trial:primary-1",
+      "title": "Hugging Face LLM Course, Fine-Tuning with SFTTrainer",
+      "url": "https://huggingface.co/learn/llm-course/en/chapter11/3",
+      "type": "primary",
+      "description": "[Hugging Face LLM Course, Fine-Tuning with SFTTrainer](https://huggingface.co/learn/llm-course/en/chapter11/3) (public illustrated guide with training steps, monitoring and a quiz, not a live training simulation). This direct section is more useful for the trial than the course introduction.",
+      "verification": "Verified, public official tutorials/docs, mostly text; SFTTrainer section includes illustrations and quiz",
+      "caveats": "Direct SFTTrainer section covers dataset, training configuration, monitoring and post-training evaluation, but does not supply the required pre-training baseline comparison. Actual runs need compatible hardware/packages; free notebook access contingent. `main` docs may differ from installed stable versions. No installation.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "adapt-preferences-dpo:primary-1",
+      "title": "Forward Pass, Training and Fine-tuning, chapter 5",
+      "url": "https://forwardpass.dev/training",
+      "type": "primary",
+      "description": "[Forward Pass, Training and Fine-tuning, chapter 5](https://forwardpass.dev/training) (browser DPO guide; RLHF in chapter 3 gives context).",
+      "verification": "Verified, public browser guides/animations; no API key advertised",
+      "caveats": "Named chapters share one URL and require navigation. Some prices/performance are illustrative or time-sensitive. Mobile untested. [Embeddings](https://forwardpass.dev/embeddings) and [tokenizer training](https://forwardpass.dev/tokenizer-training) were indexed but direct fetch failed: **UNVERIFIED**, not primary recommendations.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "adapt-preferences-dpo:supporting-1",
+      "title": "TRL DPO Trainer",
+      "url": "https://huggingface.co/docs/trl/main/dpo_trainer",
+      "type": "supporting",
+      "description": "[TRL DPO Trainer](https://huggingface.co/docs/trl/main/dpo_trainer) (official preference format; `main` may require source install).",
+      "verification": "Verified, public official tutorials/docs, mostly text; SFTTrainer section includes illustrations and quiz",
+      "caveats": "Direct SFTTrainer section covers dataset, training configuration, monitoring and post-training evaluation, but does not supply the required pre-training baseline comparison. Actual runs need compatible hardware/packages; free notebook access contingent. `main` docs may differ from installed stable versions. No installation.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "eval-task-quality:primary-1",
+      "title": "Forward Pass, Training and Fine-tuning, chapter 6",
+      "url": "https://forwardpass.dev/training",
+      "type": "primary",
+      "description": "[Forward Pass, Training and Fine-tuning, chapter 6](https://forwardpass.dev/training) (browser evaluation guide). Use a separate rubric for evidence.",
+      "verification": "Verified, public browser guides/animations; no API key advertised",
+      "caveats": "Named chapters share one URL and require navigation. Some prices/performance are illustrative or time-sensitive. Mobile untested. [Embeddings](https://forwardpass.dev/embeddings) and [tokenizer training](https://forwardpass.dev/tokenizer-training) were indexed but direct fetch failed: **UNVERIFIED**, not primary recommendations.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "eval-task-quality:supporting-1",
+      "title": "EleutherAI LM Evaluation Harness",
+      "url": "https://github.com/EleutherAI/lm-evaluation-harness",
+      "type": "supporting",
+      "description": "[EleutherAI LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (official standard-task CLI).",
+      "verification": "Verified, public text/open-source tools",
+      "caveats": "Automated judges may need a model/API and have label errors; manual rubric is free. No evaluation run.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "eval-performance:primary-1",
+      "title": "Vizuara, Prefill vs Decode timeline",
+      "url": "https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/03_prefill_vs_decode.html",
+      "type": "primary",
+      "description": "[Vizuara, Prefill vs Decode timeline](https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/03_prefill_vs_decode.html) (interactive metric intuition, not measured data).",
+      "verification": "Verified via indexed direct pages, public visual guides; index fetch failed in web tool",
+      "caveats": "Some fixed performance/quality claims are oversimplified or time-sensitive. Listed Colab labs not run; free GPU quota uncertain. Mobile/control behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "eval-performance:supporting-1",
+      "title": "llama-bench guide",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/master/tools/llama-bench/README.md",
+      "type": "supporting",
+      "description": "[llama-bench guide](https://github.com/ggml-org/llama.cpp/blob/master/tools/llama-bench/README.md) (official tests/exclusions).",
+      "verification": "Verified, official text/runnable CLI",
+      "caveats": "Free source; model license, download, RAM and disk must be checked. Benchmark excludes tokenization/sampling. No command run.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "eval-rag-depth:primary-1",
+      "title": "RAGAS, Context Precision",
+      "url": "https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_precision/",
+      "type": "primary",
+      "description": "[RAGAS, Context Precision](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_precision/) (worked text metric guide). Retained because no verified interactive visual covered both retrieval quality and answer faithfulness at this depth; the visual candidate in the register could not be audited beyond its index.",
+      "verification": "Verified, public text/open-source tools",
+      "caveats": "Automated judges may need a model/API and have label errors; manual rubric is free. No evaluation run.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "eval-structured-reliability:primary-1",
+      "title": "Vizuara, Structured Output and Logit Biasing",
+      "url": "https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/29_structured_output.html",
+      "type": "primary",
+      "description": "[Vizuara, Structured Output and Logit Biasing](https://vizuaraai.github.io/inference-engineering-visual-guides/visual_walkthroughs/29_structured_output.html) (token-mask and grammar-state walkthrough). Ignore fixed overhead/perfect-reliability claims as empirical guarantees.",
+      "verification": "Verified via indexed direct pages, public visual guides; index fetch failed in web tool",
+      "caveats": "Some fixed performance/quality claims are oversimplified or time-sensitive. Listed Colab labs not run; free GPU quota uncertain. Mobile/control behavior untested.",
+      "verificationDate": "2026-10-30"
+    },
+    {
+      "id": "eval-synthesis:primary-1",
+      "title": "Inference Infrastructure, Inference Runtimes",
+      "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m11-runtimes.html",
+      "type": "primary",
+      "description": "[Inference Infrastructure, Inference Runtimes](https://datasystem.school/inference-infrastructure-animated-tutorials/m11-runtimes.html) (animated stack recap connecting scheduler, KV, weights and streaming).",
+      "verification": "Verified, public step/auto-play modules; some direct fetches failed transiently but indexed content matched the index",
+      "caveats": "No account/dependency advertised. Conceptual figures, not benchmarks; controls/mobile untested.",
+      "verificationDate": "2026-10-30"
+    }
+  ],
+  "deepDives": [
+    {
+      "title": "[Speculative decoding](https://datasystem.school/inference-infrastructure-animated-tutorials/m06-speculative.html), [prefix caching/offload](https://datasystem.school/inference-infrastructure-animated-tutorials/m08-kvoffload.html)",
+      "why": "Useful for latency and repeated-prefix workloads.",
+      "links": [
+        {
+          "title": "Speculative decoding",
+          "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m06-speculative.html"
+        },
+        {
+          "title": "prefix caching/offload",
+          "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m08-kvoffload.html"
+        }
+      ]
+    },
+    {
+      "title": "[MoE, sparse attention and long context](https://forwardpass.dev/attention)",
+      "why": "Model-specific routing and context tradeoffs after dense Transformers.",
+      "links": [
+        {
+          "title": "MoE, sparse attention and long context",
+          "url": "https://forwardpass.dev/attention"
+        }
+      ]
+    },
+    {
+      "title": "FlashAttention kernel implementation and profiling",
+      "why": "Deepen I/O reasoning when kernel optimization is an actual task; not core.",
+      "links": []
+    },
+    {
+      "title": "[Tensor/pipeline parallelism](https://datasystem.school/inference-infrastructure-animated-tutorials/m03-sharding.html)",
+      "why": "Relevant when one device cannot fit the model or traffic.",
+      "links": [
+        {
+          "title": "Tensor/pipeline parallelism",
+          "url": "https://datasystem.school/inference-infrastructure-animated-tutorials/m03-sharding.html"
+        }
+      ]
+    },
+    {
+      "title": "Distillation, reward modeling, RLHF/GRPO",
+      "why": "Specialized post-training. DPO concepts suffice for core.",
+      "links": []
+    },
+    {
+      "title": "Multimodal inference and distributed operations",
+      "why": "Pursue for a concrete use case; real operations require real systems.",
+      "links": []
+    }
+  ]
+}

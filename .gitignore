@@ -4,15 +4,20 @@
 .DS_Store
 Thumbs.db
 
-# If tooling is added later
+# Tooling and generated browser evidence
 node_modules/
 dist/
 coverage/
+artifacts/
 .env
 .env.*
 !.env.example
 
-# Temporary local files / exports that may contain private learning notes
+# Private exports must never become public static assets
+*.local
 *.local.json
 *.private.json
 *.tmp
+aethera-private-backup*.json
+aethera-before-import*.json
+aethera-recovery*.json

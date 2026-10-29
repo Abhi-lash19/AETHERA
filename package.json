@@ -1,0 +1,22 @@
+{
+  "name": "aethera",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "validate:data": "node scripts/curriculum.mjs",
+    "data:sync": "node scripts/curriculum.mjs --write",
+    "test": "node --test tests/logic.test.mjs",
+    "build": "npm run validate:data && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:e2e": "node scripts/browser-check.mjs"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1",
+    "vite": "8.3.5"
+  }
+}

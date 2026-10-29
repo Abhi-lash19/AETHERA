@@ -1,194 +1,79 @@
-# AETHERA
+# Athena — AI Engineering Learning Tracker
 
-### A visual-first, interactive roadmap for learning AI engineering.
+> **Status:** Planning only. No application or dashboard has been implemented.
 
-A personal learning dashboard designed to make AI engineering easier to explore, understand, practice, and track.
+Athena is my personal, visual-first AI engineering learning tracker: one attractive, mobile-friendly website that tells me **what to study, why it matters, where to learn it, what to try, how to tell whether I understood it, and what comes next**.
 
-The goal is simple: **know what to learn, why it matters, where to learn it, how to practice it, and what to study next.**
+This is **not** an AI engineering lab, an AI model, an online IDE, a course-hosting service, or a public portfolio. Any exercises happen in external websites, notebooks or projects; Athena provides guidance and may record links to evidence.
 
-This project is a personal learning companion, not a course platform, AI model implementation, or public portfolio website.
+## Product principles
 
-> **Project status:** Planning and curriculum research. Dashboard implementation has not started.
+1. **Curriculum first:** agree on learning order and resources before developing the UI.
+2. **Visual-first:** recommend animations, interactive explanations and diagrams wherever genuinely useful.
+3. **Understand, don't just click:** track studying, practice and conceptual understanding separately.
+4. **Lightweight:** static GitHub Pages site; no backend, database, login or separate lab repository required.
+5. **Personal use:** edit progress on laptop; browse published progress read-only on phone.
+6. **Responsive by design:** touch, small screens, keyboard and accessibility are not optional.
+7. **Truthful status:** planned, implemented and verified are different things.
 
----
+## Planned experience (not yet implemented)
 
-## 🎯 Purpose
+- A welcoming home dashboard showing current learning phase, next recommended activity and progress.
+- Prerequisite-aware learning roadmap with expandable modules and topic detail views.
+- Curated direct links to verified free visual and interactive learning resources.
+- Checklist for learning activities; separate progress indicators for studying, exercises and understanding.
+- Practical exercise instructions, reflection prompts and optional evidence links, without running experiments in Athena.
+- Personal notes and lightweight progress persistence; export/import and publication to GitHub for phone viewing.
+- Polished responsive layout, accessible controls, touch-friendly mobile interactions, dark/light appearance.
 
-AI engineering covers many interconnected subjects, from understanding how large language models work to inference optimization, retrieval systems, fine-tuning, and model evaluation.
+**Every feature listed above is a requirement or proposal, not a working feature.** The exact behavior is subject to planning discussions.
 
-Learning resources exist across interactive websites, visual explanations, documentation, notebooks, and tutorials. However, following them in the correct order and tracking real understanding can be difficult.
+## Learning sequence — draft, not a fixed deadline
 
-This tracker aims to bring those resources together into one organized, visually engaging learning journey.
+We will refine phases, topics and dependencies in `docs/CURRICULUM.md`. Initial areas: foundations and math intuition; tokenization and embeddings; Transformer attention; generation and sampling; GPU/memory fundamentals; prefill and decode; KV cache; quantization; batching and serving/vLLM; RAG and evaluation; fine-tuning and LoRA/QLoRA; preference optimization/DPO; benchmarking and applied synthesis.
 
-## ✨ Planned Features
+The earlier 14-week idea is a **baseline for topic coverage**, not a deadline or promise that the curriculum has been finalized.
 
-### Learning Roadmap
-- Phase-wise AI engineering curriculum.
-- Topic dependencies and recommended learning order.
-- Learning objectives and prerequisite explanations.
-- Flexible progression without rigid deadlines.
+## Initial resource bookmarks
 
-### Visual Learning Resources
-- Curated interactive visualizations and animations.
-- Direct links to learning resources.
-- Beginner-friendly explanations and technical references.
-- Resource recommendations matched to specific topics.
+These are research candidates, **not a fully audited curriculum**:
 
-### Interactive Progress Tracking
-- Topic-level completion checklists.
-- Learning progress indicators.
-- Separate tracking for understanding and practical activities.
-- Current learning module and next recommended topic.
-- Personal notes and learning reflections.
+- [Forward Pass](https://forwardpass.dev/) — multiple interactive LLM guides.
+- [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) — interactive Transformer and sampling exploration.
+- [LLM Visualization](https://bbycroft.net/llm) — inspect and assess for appropriate learning tasks.
+- [Inference Infrastructure animated tutorials](https://datasystem.school/inference-infrastructure-animated-tutorials/index.html) — animated infrastructure modules.
+- [Inference Engineering Visual Guides](https://vizuaraai.github.io/inference-engineering-visual-guides/) — pending section-by-section assessment.
 
-### Guided Practical Learning
-- Exercises linked to relevant concepts.
-- Instructions for external experiments or notebooks.
-- Expected observations and completion criteria.
-- Optional links to completed work or supporting evidence.
+Resource links need relevant section-level review, mobile usability checks and a clear match to learning objectives before being presented as vetted recommendations.
 
-### Personal Dashboard Experience
-- Modern, visually polished user interface.
-- Responsive desktop, tablet, and mobile layouts.
-- Touch-friendly navigation and interactions.
-- Expandable learning modules.
-- Dark and light themes.
-- Accessible navigation and readable content.
+## Intended technology (not chosen irrevocably)
 
-### Progress Persistence
-- Local browser-based progress storage.
-- Export and import functionality.
-- Planned GitHub-based progress publishing.
-- Read-only progress viewing from mobile devices.
+Prefer modular **HTML, CSS, JavaScript, and structured JSON** on **GitHub Pages**. Use browser storage for editing on the laptop. Publishing changes for a phone to read requires an explicit export/publish mechanism; browser localStorage cannot be directly read by GitHub Actions. No framework will be added without a demonstrated benefit.
 
-All features above are **planned, not yet implemented**.
+## Project documentation
 
----
+| Document | Responsibility |
+| --- | --- |
+| [`docs/CURRICULUM.md`](docs/CURRICULUM.md) | Topics, prerequisites, learning outcomes, resource mapping and practical tasks |
+| [`docs/TRACKER_SPEC.md`](docs/TRACKER_SPEC.md) | Dashboard content, behavior, progress semantics and user flows |
+| [`docs/UI_UX.md`](docs/UI_UX.md) | Desktop/mobile layouts, interactions, accessibility and visual direction |
+| [`docs/TECHNICAL_DESIGN.md`](docs/TECHNICAL_DESIGN.md) | Lightweight static architecture, data, storage and deployment decisions |
+| [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) | Verified state, decisions pending, next actions and evidence |
+| [`AGENTS.md`](AGENTS.md) | Development guardrails for Codex and other coding agents |
 
-## 🧠 Learning Methodology
+## Workflow
 
-The tracker follows a six-step learning approach:
+1. Agree on curriculum and specific resources in discussion.
+2. Finalize progress behavior and UI/UX before coding.
+3. Record approved changes in documentation and review them.
+4. Ask Codex to implement one small documented milestone.
+5. Test real browser behavior and update `PROJECT_STATUS.md` with evidence.
+6. Deploy to GitHub Pages only when deployment is actually verified.
 
-1. **Visualize** — See the concept through diagrams, animations, or interactive explanations.
-2. **Interact** — Experiment with a visualization or demonstration where available.
-3. **Understand** — Learn the underlying engineering and technical reasoning.
-4. **Practice** — Complete a small, relevant exercise.
-5. **Reflect** — Explain observations and check conceptual understanding.
-6. **Progress** — Record completion and move to the next recommended topic.
+## Repository and hosting
 
-Completion should reflect actual learning, not just opening a resource or watching a video.
+This repository is named **Athena**. GitHub Pages configuration and the published URL are **not yet verified**. Nothing here should be represented as deployed or functional.
 
-## 📚 Initial Curriculum Areas
+## Privacy note
 
-The detailed curriculum and topic dependencies will be established during the research and planning stage.
-
-Initial areas of interest include:
-
-- LLM foundations, tokenization, and embeddings
-- Transformer architecture and attention
-- LLM inference and text generation
-- GPU, memory, and inference fundamentals
-- KV cache and inference optimization
-- Quantization and model compression
-- Inference serving, batching, and vLLM
-- Retrieval-augmented generation (RAG)
-- Fine-tuning fundamentals
-- LoRA and QLoRA
-- Preference alignment and DPO
-- Model evaluation and benchmarking
-- Applied AI engineering exercises
-
-The previously discussed 14-week roadmap will serve as a starting reference, not a mandatory deadline.
-
-## 🔗 Initial Learning References
-
-The following resources are starting points for curriculum research:
-
-| Resource | Link |
-|---|---|
-| Forward Pass | https://forwardpass.dev/ |
-| Transformer Explainer | https://poloclub.github.io/transformer-explainer/ |
-| LLM Visualization | https://bbycroft.net/llm |
-| Inference Infrastructure Animated Tutorials | https://datasystem.school/inference-infrastructure-animated-tutorials/index.html |
-| Inference Engineering Visual Guides | https://vizuaraai.github.io/inference-engineering-visual-guides/ |
-
-Specific sections, learning objectives, and resource-to-topic mappings must be reviewed before they are added to the finalized curriculum.
-
-Additional high-quality free resources may be included where necessary.
-
-## 🛠 Technical Direction
-
-The tracker is intended to be a lightweight static website.
-
-Preferred technologies:
-
-- HTML
-- CSS
-- JavaScript
-- Structured JSON curriculum data
-- Browser local storage
-- GitHub Pages hosting
-
-The final implementation approach will be selected after the product requirements and UI/UX design are documented.
-
-A backend, database, authentication system, or separate AI engineering lab repository is not required.
-
-## 📱 Device Usage
-
-**Laptop / Desktop**
-- Browse the learning roadmap.
-- Open learning resources.
-- Update checklists and progress.
-- Add notes and evidence links.
-- Export or publish progress.
-
-**Mobile / Tablet**
-- View learning progress.
-- Browse learning modules.
-- Open visual resources and tutorials.
-- Navigate using touch-friendly controls.
-
-Mobile progress editing is not required initially.
-
-## 🗺 Development Approach
-
-The project will follow four stages:
-
-**Stage 0 — Repository Setup**
-
-Create the GitHub repository and establish the project purpose.
-
-**Stage 1 — Research and Planning**
-
-Finalize the curriculum, learning resources, progress rules, features, UI/UX expectations, and lightweight technical design.
-
-**Stage 2 — Dashboard Implementation**
-
-Build the responsive interface, curriculum navigation, progress tracking, and persistence using the approved documentation.
-
-**Stage 3 — Verification and Deployment**
-
-Test functionality across screen sizes, verify interactions and data persistence, and publish the website through GitHub Pages.
-
-Further improvements will be considered based on actual personal usage.
-
-## ✅ Development Principles
-
-- Keep the project lightweight and maintainable.
-- Prioritize learning quality over feature quantity.
-- Use verified resources and direct links.
-- Do not introduce unnecessary infrastructure.
-- Design for both touch and keyboard interaction.
-- Never mark untested functionality as complete.
-- Keep project decisions and implementation status documented.
-- Build only after the learning requirements have been agreed upon.
-
-## 📌 Current Status
-
-**Planning — no dashboard implementation has started.**
-
-The next step is to research and finalize the learning roadmap, resource mappings, progress tracking behavior, and UI/UX requirements.
-
----
-
-Built for consistent, practical, visual-first AI engineering learning.
+GitHub Pages on a public repository exposes published site assets. Do not commit private reflections, personal credentials, tokens, or sensitive notes. We must explicitly define what progress data may be published before implementing phone sync.

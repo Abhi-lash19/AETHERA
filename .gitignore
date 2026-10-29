@@ -1,0 +1,18 @@
+# Local editors and operating system artifacts
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# If tooling is added later
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+
+# Temporary local files / exports that may contain private learning notes
+*.local.json
+*.private.json
+*.tmp

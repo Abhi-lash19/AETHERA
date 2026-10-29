@@ -1,4 +1,4 @@
-# Athena — Project Status
+# Aethera — Project Status
 
 **Updated:** 2026-10-30  
 **Overall state:** Planning / documentation drafting. **No working dashboard is claimed.**
@@ -7,7 +7,7 @@
 
 | Area | State | Evidence / caveat |
 | --- | --- | --- |
-| GitHub repository named `Athena` | **User reported cloned** | Remote URL, current branch and commit SHA not inspected here |
+| GitHub repository named `Aethera` | **User reported cloned** | Remote URL, current branch and commit SHA not inspected here |
 | README and planning docs | **Drafted for user to add** | This document package is generated locally; not confirmed committed |
 | Curriculum approval | **Pending** | Candidate phases and prerequisites remain unapproved |
 | Resource inventory | **Partially inspected** | See `CURRICULUM.md`; specific deep links/mobile/tests mostly pending |

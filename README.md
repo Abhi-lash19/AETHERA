@@ -1,10 +1,10 @@
-# Athena — AI Engineering Learning Tracker
+# Aethera — AI Engineering Learning Tracker
 
 > **Status:** Planning only. No application or dashboard has been implemented.
 
-Athena is my personal, visual-first AI engineering learning tracker: one attractive, mobile-friendly website that tells me **what to study, why it matters, where to learn it, what to try, how to tell whether I understood it, and what comes next**.
+Aethera is my personal, visual-first AI engineering learning tracker: one attractive, mobile-friendly website that tells me **what to study, why it matters, where to learn it, what to try, how to tell whether I understood it, and what comes next**.
 
-This is **not** an AI engineering lab, an AI model, an online IDE, a course-hosting service, or a public portfolio. Any exercises happen in external websites, notebooks or projects; Athena provides guidance and may record links to evidence.
+This is **not** an AI engineering lab, an AI model, an online IDE, a course-hosting service, or a public portfolio. Any exercises happen in external websites, notebooks or projects; Aethera provides guidance and may record links to evidence.
 
 ## Product principles
 
@@ -22,7 +22,7 @@ This is **not** an AI engineering lab, an AI model, an online IDE, a course-host
 - Prerequisite-aware learning roadmap with expandable modules and topic detail views.
 - Curated direct links to verified free visual and interactive learning resources.
 - Checklist for learning activities; separate progress indicators for studying, exercises and understanding.
-- Practical exercise instructions, reflection prompts and optional evidence links, without running experiments in Athena.
+- Practical exercise instructions, reflection prompts and optional evidence links, without running experiments in Aethera.
 - Personal notes and lightweight progress persistence; export/import and publication to GitHub for phone viewing.
 - Polished responsive layout, accessible controls, touch-friendly mobile interactions, dark/light appearance.
 
@@ -72,7 +72,7 @@ Prefer modular **HTML, CSS, JavaScript, and structured JSON** on **GitHub Pages*
 
 ## Repository and hosting
 
-This repository is named **Athena**. GitHub Pages configuration and the published URL are **not yet verified**. Nothing here should be represented as deployed or functional.
+This repository is named **Aethera**. GitHub Pages configuration and the published URL are **not yet verified**. Nothing here should be represented as deployed or functional.
 
 ## Privacy note
 

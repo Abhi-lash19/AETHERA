@@ -4,7 +4,7 @@
 
 ## Purpose and learning approach
 
-Athena should guide a beginner-to-practical AI engineering journey using this sequence: **visualize → interact → understand → practice externally → explain observations → record progress**. The intent is depth and transferable engineering judgment, not merely checking boxes or rushing through a 14-week schedule.
+Aethera should guide a beginner-to-practical AI engineering journey using this sequence: **visualize → interact → understand → practice externally → explain observations → record progress**. The intent is depth and transferable engineering judgment, not merely checking boxes or rushing through a 14-week schedule.
 
 ## Topic record: required fields
 
@@ -79,7 +79,7 @@ This graph is a **proposal for discussion**, not a validated learning dependency
 2. Each topic gets one **best starting resource**, plus optional deeper technical/reference material. Do not overload cards.
 3. Verify exact URL, relevant section, accessibility on mobile, availability and required login before recommending.
 4. Do not embed third-party sites by default; use direct external links unless embedding is permitted and valuable.
-5. Keep source attribution. Do not copy copyrighted course content into Athena.
+5. Keep source attribution. Do not copy copyrighted course content into Aethera.
 6. Costly hardware/Colab exercises are optional, clearly labeled, with no-cost conceptual alternative.
 
 ## Open curriculum decisions

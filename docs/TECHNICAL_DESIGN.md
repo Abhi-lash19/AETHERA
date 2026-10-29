@@ -4,12 +4,12 @@
 
 ## Architecture goal
 
-Athena is a static, client-side learning tracker hosted on GitHub Pages. Keep code modular and dependencies minimal. **No backend, database, user login, model inference or separate lab repo.**
+Aethera is a static, client-side learning tracker hosted on GitHub Pages. Keep code modular and dependencies minimal. **No backend, database, user login, model inference or separate lab repo.**
 
 ## Candidate architecture
 
 ```text
-GitHub repository (Athena)
+GitHub repository (Aethera)
   ├─ curated curriculum JSON and resource metadata (version-controlled)
   ├─ HTML / CSS / JavaScript static app
   ├─ optional published-progress.json (public, sanitized)
@@ -28,7 +28,7 @@ Phone browser
 ## Suggested file structure once coding begins (not to create yet)
 
 ```text
-Athena/
+Aethera/
   index.html
   assets/             # only assets actually used
   styles/             # tokens, layout, components

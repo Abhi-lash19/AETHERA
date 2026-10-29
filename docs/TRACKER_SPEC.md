@@ -8,7 +8,7 @@ Single primary user, editing from a laptop and viewing from desktop/mobile. No c
 
 ## 2. Information hierarchy (proposal)
 
-**Journey → Phase → Module → Topic → Activity/Resource/Exercise/Reflection.** Each item requires a stable ID so progress remains meaningful when the order changes. The user must be able to open resource links without losing the place in Athena.
+**Journey → Phase → Module → Topic → Activity/Resource/Exercise/Reflection.** Each item requires a stable ID so progress remains meaningful when the order changes. The user must be able to open resource links without losing the place in Aethera.
 
 ## 3. Home screen requirements
 

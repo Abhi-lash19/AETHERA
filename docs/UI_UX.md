@@ -1,4 +1,4 @@
-# UI/UX Direction — Athena
+# UI/UX Direction — Aethera
 
 **Status:** Design requirements draft, not approved mockups. The final visual style will be discussed before Codex implementation.
 

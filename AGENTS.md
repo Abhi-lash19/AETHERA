@@ -1,8 +1,8 @@
-# Instructions for Coding Agents (Codex) — Athena
+# Instructions for Coding Agents (Codex) — Aethera
 
 ## Mission
 
-Athena is a **small static AI engineering learning tracker**, not an AI engineering experimentation platform. Implement only approved tracker behavior. No backend, database, auth provider, embedded model inference, separate lab repo, large framework or elaborate infrastructure unless requirements are explicitly revised.
+Aethera is a **small static AI engineering learning tracker**, not an AI engineering experimentation platform. Implement only approved tracker behavior. No backend, database, auth provider, embedded model inference, separate lab repo, large framework or elaborate infrastructure unless requirements are explicitly revised.
 
 ## Read before any change
 

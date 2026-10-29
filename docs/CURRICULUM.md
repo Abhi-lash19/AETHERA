@@ -1,6 +1,6 @@
-# AI Engineering Curriculum: review draft
+# AI Engineering Curriculum
 
-**Status:** Proposed for review, not approved as tracker data. Researched 2026-10-30. Topic-based, with no deadline. Experiments happen outside Aethera.
+**Status:** Approved learning-path baseline (2026-10-30), now organized into modules for Aethera navigation. Resource controls, mobile compatibility and hardware exercises remain subject to real-world verification. Topic-based, with no deadline. Experiments happen outside Aethera.
 
 ## A. Learning goal
 
@@ -21,6 +21,29 @@ Use **Visualize → Interact → Understand → Practice → Explain observation
 | 7. Evidence | Evaluation, benchmarking, RAG, reliability | Defend a narrow engineering decision | Phases 4–6 | Core |
 
 The 31 core topics form a suggested order, not a lock. Where hardware is unavailable, a conceptual check may be completed if honestly labeled; it never stands in for a hands-on experiment. `llm-transformer-attention` preserves the only explicit topic ID in the old draft. Other IDs are new proposals; the old numbered modules were stage labels, not persisted topic IDs. No existing progress is migrated.
+
+### B.1. Module map for tracker navigation
+
+**Approved grouping:** 14 modules across the seven existing phases. This is an organizational layer, not 14 additional lessons. Each existing topic belongs to exactly one module and retains its original stable ID and prerequisite rules.
+
+| Phase | Module ID and title | Topics, in recommended order | Count |
+| --- | --- | --- | ---: |
+| 1 | `foundations-neural-computation`: **Neural Computation Basics** | `nn-weights-operations`, `nn-training-loop` | 2 |
+| 1 | `foundations-text-representations`: **Tokens and Representations** | `llm-tokenization`, `llm-embeddings` | 2 |
+| 2 | `transformer-attention-core`: **Transformer Structure and Attention** | `llm-transformer-block`, `llm-transformer-attention`, `llm-heads-positions` | 3 |
+| 2 | `transformer-outputs-generation`: **From Transformer Blocks to Generation** | `llm-ffn-residual`, `llm-generation` | 2 |
+| 3 | `inference-decoding-cache`: **Prefill, Decode and KV Cache** | `infer-prefill-decode`, `infer-kv-cache` | 2 |
+| 3 | `inference-context-performance`: **Context Costs and Performance Metrics** | `infer-context-limits`, `infer-metrics` | 2 |
+| 4 | `hardware-compute-memory`: **AI Hardware and Bottlenecks** | `hardware-cpu-gpu`, `hardware-roofline` | 2 |
+| 4 | `local-models-quantization`: **Local Models and Quantization** | `local-model-choice`, `local-formats-quantization`, `local-quant-comparison` | 3 |
+| 5 | `serving-batching-memory`: **Batching and KV Memory Management** | `serve-batching`, `serve-paged-kv` | 2 |
+| 5 | `serving-runtimes-scheduling`: **Inference Runtimes and Scheduling** | `serve-runtimes`, `serve-scheduling` | 2 |
+| 6 | `adaptation-foundations`: **Supervised Adaptation and Adapters** | `adapt-sft-data`, `adapt-lora-qlora` | 2 |
+| 6 | `adaptation-trials-preferences`: **Adaptation Trials and Preferences** | `adapt-guided-trial`, `adapt-preferences-dpo` | 2 |
+| 7 | `evidence-quality-benchmarks`: **Model Quality and Performance Evidence** | `eval-task-quality`, `eval-performance` | 2 |
+| 7 | `evidence-reliability-decisions`: **Grounded Reliability and Engineering Choices** | `eval-rag-depth`, `eval-structured-reliability`, `eval-synthesis` | 3 |
+
+**Module rules:** Module order follows the topic order in Section D. Topic links, learning objectives, resource verification states and practice instructions remain defined by their individual entries. Module membership is not a prerequisite and does not lock navigation. Module progress is calculated from member topics using the rules in `docs/TRACKER_SPEC.md`. Adding or changing a module must not erase progress associated with a stable topic ID.
 
 ## C. Topic dependency map
 
@@ -381,12 +404,20 @@ Only IDs listed under **Prerequisites** are necessary for recommendation logic. 
 | [RAG Evaluation Lab index](https://rag-evaluation.futureproofindia.com/), [Unravel RAG Visualizer](https://github.com/jvorndran/RAG-Visualizer) | **Investigated, not assigned** | Lab index describes visual faithfulness and context-quality lessons, but direct lesson fetches failed, so lesson content/controls remain **UNVERIFIED**. Unravel documents local interactive retrieval comparison, but requires local setup and does not cover answer faithfulness as directly as this topic needs. Mobile behavior untested. |
 | [MLCIV LoRA/QLoRA notebook](https://mlciv.com/nlp-notebooks/notebooks/hw5/Part1-sft_trl_lora_qlora/) | **Investigated, not assigned**; public notebook-style tutorial | Offers a training workflow, but uses Hugging Face login and a Colab GPU, with no verified baseline-before-training comparison. Free GPU availability is contingent. It is not a clearer visual primary than the existing course sequence. |
 
-## G. Open decisions for user approval
+## G. Approved scope and remaining learning logistics
 
-1. Should the eventual tracker show separate conceptual and hands-on statuses for the guided LoRA/QLoRA trial? The proposed curriculum permits conceptual completion without hardware while reserving hands-on completion for a real run.
-2. Should the RAG quality topic remain core given your existing experience, or move to optional after a diagnostic check?
-3. Is 31-topic depth right, especially the balance between serving and adaptation?
-4. What completion evidence should the tracker eventually store: explanation, checklist, optional artifact link, or a combination? These checks do not approve progress rules.
-5. What CPU RAM, GPU/VRAM and disk are available later, and are free notebook sessions acceptable? No NVIDIA GPU is assumed.
+### Approved
 
-**Approval boundary:** Resource mapping, order and completion checks remain proposals. No learning progress, tracker behavior or application code was changed.
+1. The learning path has **seven phases, 14 navigation modules and 31 core topics**, with optional deep dives and no deadline.
+2. Advanced RAG quality evaluation stays core because it extends previous RAG implementation experience into defensible evaluation.
+3. Conceptual learning is distinct from an actual model adaptation run. A baseline/evaluation plan can demonstrate understanding, but never counts as a completed training experiment.
+4. Aethera may store independent study checkboxes, self-assessed understanding, exercise statuses, optional notes/questions/review flags and optional evidence links as defined in `docs/TRACKER_SPEC.md`.
+5. Essential prerequisites guide recommended next topics but do not prohibit exploration.
+
+### Still subject to verification or later planning
+
+- The user's available CPU RAM, GPU/VRAM, storage and willingness to use contingent free notebook GPU sessions must be checked before specifying an executable model adaptation trial.
+- Resource links and described page controls were investigated at drafting time, but have not been comprehensively tested on mobile or against all required interactive behaviors.
+- Exact presentation of modules and topic details belongs in `docs/UI_UX.md`; it does not change the curriculum itself.
+
+**Approval boundary:** These are approved learning-structure decisions, not verification that any exercises have run or that the tracker has been implemented.

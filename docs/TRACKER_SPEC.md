@@ -1,7 +1,7 @@
 # Aethera Tracker Specification
 
 **Document type:** Product behavior requirements  
-**Decision status:** User-approved choices recorded on 2026-10-30; explicitly marked details remain open.  
+**Decision status:** User-approved preferences plus delegated product-behavior decisions finalized on 2026-10-30. Module names and rules are documented; implementation remains pending.  
 **Implementation status:** Not implemented. This document is not evidence that any feature works.
 
 ## 1. Purpose, user and boundaries
@@ -27,7 +27,7 @@ Aethera is a **personal, visual-first AI engineering learning tracker**. It orga
 - **Topic:** A specific learning objective from the curriculum, identified by a stable topic ID.
 - **Activities:** Resources to explore, study tasks, a practical exercise, an understanding check and optional reflection/evidence.
 
-The committed curriculum currently defines **seven phases and 31 core topics**, but does not define final module groupings. **Module names, IDs and assignments are still to be decided.** They must be mapped from the curriculum before implementation, without changing the existing 31 topic IDs merely to support the UI.
+The approved curriculum defines **seven phases, 14 named modules and 31 core topics**. Their canonical module IDs, labels and exact topic memberships are listed in **Section B.1 of `docs/CURRICULUM.md`**. Each phase contains two modules; each topic belongs to exactly one. Do not duplicate or infer a different mapping from UI layouts. Module groupings are navigation metadata, not prerequisite gates; only topic IDs and their authored prerequisites determine eligibility.
 
 ### Navigation behaviors
 
@@ -121,46 +121,74 @@ For the curriculum's guided adaptation trial, explicitly distinguish **conceptua
 
 The user should be able to tell whether a topic is **not started**, **in progress**, **conceptually understood**, or has an **actual completed practical activity**, without relying on a misleading single completion label.
 
-A separate count of fully completed core topics may be shown, but its exact threshold is **not yet approved**. In particular, an unfinished or skipped required practical must not be silently counted as performed.
+### 5.4 Derived topic summary and completion rules
 
-Do not create automated mastery scores or award completion based solely on page visits.
+A topic can be described using these **derived** labels, while its three underlying dimensions remain visible:
+
+| Derived label | Condition |
+| --- | --- |
+| Not started | No required study activity completed, no understanding rating selected, and no practical work started or completed |
+| In progress | Any recorded progress exists but the topic does not meet conceptual completion |
+| Conceptually complete | All required study activities are complete and the self-assessment is `can_explain` or `can_apply`; practical may still be unfinished |
+| Fully complete | Conceptually complete **and** the topic's required practical exercise is marked `completed` |
+
+- **Skipped for now** is an unfinished practical and does **not** produce Fully complete. It does not block continuing to other topics.
+- A learning topic can show **Conceptually complete · Practical skipped** without contradicting itself.
+- Every current core topic has a named practical activity. Its completion means the user actually performed the stated activity, whether a browser simulation, calculation, diagram, script, comparison or written engineering artifact. Only reading about an exercise is not completing it.
+- The `adapt-guided-trial` conceptual fallback may satisfy a self-assessed understanding check, but cannot mark the hands-on training practical completed. Do not automatically infer an actual training run from a plan.
+- An optional extension or advanced hardware run never becomes required merely by appearing as a resource or suggestion.
+- Optional notes, evidence and bookmarks are not required for a topic's completion.
+- The user may undo progress or lower their understanding assessment. Derived labels and percentages recalculate immediately.
+- If a topic has no relevant required practice in a future curriculum revision, full completion requires conceptual completion only; show its practice as Not applicable rather than inventing an activity.
+
+Do not create automated mastery scores, independent skill certifications, or completion based solely on page visits.
 
 ## 6. Progress summaries and calculations
 
-**Approved:** Display three independent progress bars, not a combined overall score.
+**Approved:** Show exactly three independent core progress bars. Do not invent a combined score.
 
-| Indicator | What it communicates | Proposed computation, pending detailed approval |
+| Indicator | Numerator | Denominator |
 | --- | --- | --- |
-| Study progress | How much of the required learning activities have been marked done | Done required study activities ÷ all required study activities |
-| Understanding progress | How many core topics the learner can explain or apply | Core topics rated `can_explain` or `can_apply` ÷ total core topics |
-| Practical progress | How many required practical exercises have actually been completed | Completed required practical exercises ÷ total required practical exercises |
+| Study | Completed required study activity IDs | All required study activity IDs in the 31 core topics |
+| Understanding | Core topics self-assessed as `can_explain` or `can_apply` | All 31 core topics |
+| Practical | Core-topic practical activities explicitly marked `completed` | All applicable core-topic required practical activities |
 
-- Display numerator and denominator with each percentage, such as `8/31 topics`.
-- Round only for display.
-- If an indicator has zero applicable items, show **Not applicable**, not 100%.
-- Optional resources and optional deep dives should not change the core denominator unless the user deliberately chooses to include them in a later approved design.
-- Skipped practicals remain in the applicable denominator and therefore unfinished, but they do not prevent navigation.
-- Conceptual fallbacks can satisfy a documented understanding check, but cannot be counted as a hands-on run.
-- Phase and module summaries should use the same rules, scoped to their topics.
-- **No combined overall percentage or weighted score.**
+### Consistent counting rules
 
-The three formulas above are **proposals consistent with the approved separate-bars requirement**. We should approve their exact denominator rules, especially topics without an appropriate practical exercise, before implementation.
+1. **Study:** Give every core topic at least one stable required study activity: review its primary curated resource and learning objectives. Additional authored required study activities can count if explicitly defined, but optional sources and optional deep dives do not. Viewing/opening a resource does not auto-check it.
+2. **Understanding:** `not_assessed` and `needs_review` do not contribute to the numerator; `can_explain` and `can_apply` each contribute once per topic. This measures a self-reported level, not an independently tested skill.
+3. **Practical:** Count an exercise only if the user explicitly marks the actual authored activity `completed`. Simulations, worksheets, diagrams and comparisons count if they are the actual exercise. A fallback reading plan or skipped run does **not** count as an executed practical. The LoRA/QLoRA training trial is never marked run merely because the conceptual plan is finished.
+4. **Applicability:** The current curriculum specifies an exercise for every core topic. If a later version explicitly has no required practical for a topic, omit that topic from the practical denominator and display Not applicable for its practice.
+5. **Skipped:** Keep `skipped_for_now` practicals in the applicable denominator, visibly pending. Skipping never creates a completed practice entry or blocks topic navigation.
+6. **Display:** Show count and percentage together. Compute from raw counts and round only on display. For a zero denominator show **Not applicable**, not 100%.
+7. **Scope:** Phase and module progress are the same three calculations limited to their member core topics. The homepage shows journey totals. Fully completed topic counts are separate from these bars.
+8. **Optional:** Exclude optional references, advanced deep dives and optional hands-on extensions from the core denominators. Do not award points for taking notes, bookmarking or simply visiting.
+9. **Identity:** Use stable topic IDs and stable activity IDs so reordering topics or modules cannot reset completion. If a curriculum update invalidates an activity ID, report it; never silently shift progress to a different activity.
+
+**No weighted, averaged or combined overall percentage.** All bars represent different kinds of progress and must be labeled accordingly.
 
 ## 7. Continue learning and next recommendation
 
-**Approved:** Recommend the next eligible learning activity using prerequisites, while allowing free manual navigation.
+**Approved:** Recommend from the curriculum's essential topic prerequisites while preserving user control. This is deterministic guidance, not AI-generated personalization.
 
-Proposed deterministic behavior:
+### Prerequisite satisfaction
 
-1. If the current topic has a pending required learning activity, recommend that activity.
-2. Otherwise recommend its relevant understanding check or practical step, if applicable.
-3. When ready to move on, select an unfinished core topic whose **essential** prerequisites have been met.
-4. Prefer curriculum order among eligible topics and explain why the topic is suggested.
-5. If a manually opened topic has missing prerequisites, show what they are and provide links to review them.
-6. A skipped practical does not stop progression. Keep it visible as outstanding work.
-7. The user can manually change their current topic and return to previously visited topics at any time.
+- A required prerequisite is **met** when its topic is conceptually complete: all required study items done and understanding set to `can_explain` or `can_apply`.
+- A skipped or unfinished practical on a prerequisite **does not prevent** the next topic from being recommended once conceptual completion is achieved.
+- `Recommended prior learning` in the curriculum is advisory and must not become a hard prerequisite.
+- If a learner chooses to open a topic with unmet prerequisites, allow it and show direct links to the missing concepts.
 
-Recommendations are simple curriculum-driven guidance, **not AI-generated personalization**. The exact prerequisite-satisfaction threshold (for example, studied versus can explain) remains open and must be settled before coding.
+### Next-action selection
+
+1. If the user has deliberately chosen an active topic, prefer continuing that topic over automatically changing it.
+2. Within the active topic: surface pending required study work first, then the understanding check if not at `can_explain`, then an uncompleted practical when feasible.
+3. When the topic is conceptually complete and its practical is `skipped_for_now`, offer **Continue to next topic** while keeping the skipped exercise on the outstanding-work list.
+4. If a topic is conceptually complete with no pending required practical, recommend the earliest not-conceptually-complete core topic whose essential prerequisites are met, following the curriculum's topic order.
+5. If nothing eligible is available, explain what prerequisite needs review. If all core topics are conceptually complete, suggest outstanding skipped exercises, review flags or optional deep dives rather than looping to the first topic.
+6. Display a simple human-readable reason for every recommendation, such as `You can explain attention, so KV cache is available`. Never claim an AI agent assessed mastery.
+7. Manual navigation, reviewing completed topics and changing the active topic remain available at all times.
+
+**Current topic:** Persist the last deliberately selected topic ID. On first use, start from the first eligible curriculum topic. If the saved topic no longer exists, show a recovery message and select the first eligible topic without losing other saved progress.
 
 ## 8. Notes, questions, review flags and evidence
 
@@ -180,7 +208,7 @@ None of these fields is mandatory to check a learning activity or record self-as
 - **Search:** Search topic names and relevant curriculum text; avoid promising full-text search inside linked websites.
 - **Filters:** At least phase, progress state, incomplete work, needs review and bookmarked items. Exact combinations can be refined during detailed design.
 - **Bookmarks:** Save favorite topics and individual learning resources for quick return. Bookmarks are distinct from completion.
-- **Recent activity:** Provide an easy way to resume recently visited or updated topics. Activity history reflects actual recorded actions, not fabricated study durations.
+- **Recent activity:** Show up to **10 distinct recently visited or updated topics**, newest first, with the last known visit/update time. Keep one entry per topic instead of an unlimited event-history feed. A topic visit is recorded only when the user opens that topic; the timestamp is not evidence of study duration.
 - **Export/import:** Back up and restore progress and user-created learning data.
 
 **Not required:** Daily streaks, leaderboards, achievements, social features or mandatory study-time tracking.
@@ -199,16 +227,21 @@ This section defines desired behavior; exact file formats, storage implementatio
 ### Export and import
 
 - Export a readable, versioned backup of study progress, understanding levels, practical statuses, bookmarks, notes, questions, review flags and evidence links.
-- Import must validate the data before changing saved progress and report invalid or unknown topic IDs.
-- The user should see what will be restored and whether any existing state may be overwritten.
-- Exact merge-versus-replace rules and conflict handling remain open design decisions; do not guess.
+- **Initial import behavior is Replace only**, not merge. Validate the schema and version, IDs, progress states, data types and basic size/URL safety before making any changes.
+- Before import, preview counts and the effect of replacement; explicitly warn that existing local edits will be overwritten. Offer an export of current data first. Require a deliberate confirmation; cancellation leaves state unchanged.
+- An unsupported backup schema version or invalid file must be rejected without altering saved data.
+- Unknown topic/activity IDs from an otherwise valid backup must be shown to the user. Keep them in a recoverable, non-counted unmapped section of the imported data instead of silently reassigning them or deleting them. Allow re-export of that data for future migration.
+- If replacement fails, preserve the previous saved progress and report the failure. A merge workflow can be added later only if it becomes genuinely necessary.
 
 ### Laptop-to-phone publication
 
 - The laptop is the editing source. The phone is a read-only viewer of a deliberately published snapshot on GitHub Pages.
 - A manual publication workflow is acceptable initially. Optional scheduled laptop publication can be considered later.
 - Browser local storage is not accessible to GitHub Actions or a standalone laptop scheduler automatically.
-- Only intentionally public progress should be published. **Private notes, questions and other sensitive learning data must not be published by default.**
+- The **public snapshot allowlist** includes only: curriculum version, stable topic IDs, required study completion flags, self-assessed understanding levels, practical statuses (not skip reasons), selected current topic ID, topic and phase/module aggregate progress, and snapshot publication time. No other local fields are implicitly public.
+- **Never publish by default:** private notes, personal questions, free-text reflections, evidence URLs, skip explanations, detailed activity history, local backup contents, access tokens or credentials. Bookmarks also stay private in the initial public snapshot unless explicitly approved later.
+- The laptop publisher must provide an understandable preview of the allowlisted data before the user deliberately publishes it; publication is not implied by editing local checkboxes.
+- A public snapshot is visible to **anyone with the URL**, not just the user's phone. Public URLs and screenshots must not claim confidentiality.
 - Published information must never include access tokens, secrets or private credentials.
 - A public website should not be treated as a security boundary based only on screen size or device detection; phone-read-only behavior describes the intended user workflow, not authentication.
 
@@ -260,14 +293,20 @@ These are **future acceptance criteria**, not tests already run.
 - Search, filters, bookmarks, recent activity and export/import are wanted.
 - Existing laptop-edit, phone-view-only and static-hosting scope remains in effect.
 
-### Still to settle before implementation
+### Finalized tracker behavior decisions (design baseline)
 
-1. **Module grouping:** Names, IDs and mapping of the 31 core topics into modules, without changing curriculum topic IDs.
-2. **Progress denominators:** Confirm mastery and practical percentage formulas, and treatment of topics with only a conceptual activity.
-3. **Full topic completion:** Whether a topic can be called fully complete when its practical is skipped, or whether that status is reserved for genuinely completed practical work.
-4. **Prerequisite eligibility:** Decide which learning/understanding status counts as satisfying a prerequisite for recommendations.
-5. **Import behavior:** Merge versus replace, confirmation and conflict handling.
-6. **Publishing/privacy:** Precisely which public progress fields may appear on the phone, and how they are approved for publication.
-7. **Recent activity scope:** Minimal last-visited list versus a longer activity timeline, only if the added complexity proves worthwhile.
+1. **Module grouping:** Section B.1 of `docs/CURRICULUM.md` is authoritative for the 14 named modules and all 31 stable topic IDs.
+2. **Progress:** Three distinct core bars with precise counting rules in Section 6. No blended score.
+3. **Completion:** Conceptual completion means all required study items and self-assessment at Can explain/Can apply. Fully complete additionally requires actual completion of every applicable required practical; skipped practice stays pending.
+4. **Prerequisites:** Conceptual completion satisfies required prerequisites for next-topic recommendations. Practical skips do not gate learning.
+5. **Import:** Validate and preview, then explicit Replace confirmation. Preserve unknown IDs separately without counting or silently discarding them. No automatic merge.
+6. **Published progress:** Strict public allowlist in Section 10, with explicit preview and publication. Notes, questions, evidence URLs, bookmarks, skip reasons and detailed history stay private.
+7. **Recent activity:** At most 10 distinct last-visited/updated topics, not a limitless feed.
 
-**No UI implementation, persistence mechanism, runtime behavior or verification is implied by this specification.**
+### Outside this specification
+
+- Precise color, typography, mobile layouts, navigation gestures, motion, iconography and component patterns are reserved for `docs/UI_UX.md`.
+- Actual JSON schemas, storage APIs, backup validation mechanics, static publishing process and device presentation mode are reserved for `docs/TECHNICAL_DESIGN.md`.
+- If new curriculum topics or modules are ever proposed, update the curriculum source of truth and reassess dependent tracker rules. Do not invent content at implementation time.
+
+**Status:** Product behavior baseline documented; no application code, persisted progress, published dashboard or tests are claimed.

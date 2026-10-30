@@ -2,7 +2,23 @@
 
 **Updated:** 2026-10-30
 
-**State:** Full tracker implemented and locally checked. Deployment verification is in progress; this revision does not claim a live deployment.
+**State:** Tracker and first-time experience implemented and locally checked. See the latest delivery below for deployment status.
+
+## Latest delivery — first-time experience and branding
+
+User-authorized scope: welcome/help, truthful Home action labels, roadmap discovery, local tracking entry, subtle Abhi signature, README phase overview and user-guide updates. No curriculum, schema, dependencies or workflow changes; existing progress is not reset or migrated.
+
+Changed files: `src/components/welcome.js` (new reusable welcome/help content), `src/components/ui.js`, `src/views/home.js`, `src/views/roadmap.js`, `src/main.js`, `src/state/progress.js`, `src/styles/components.css`, existing `tests/logic.test.mjs` and `scripts/browser-check.mjs`, `README.md`, `docs/USER_GUIDE.md`, and this status document.
+
+- Home: **Start Learning** before meaningful local learning activity, **Continue Learning** after required study, any understanding assessment or started/completed practice; **Explore Learning Path** in public mode. Visits, bookmarks, notes and skipped-only practice do not count.
+- Welcome: **Explore → Understand → Track**, Start Learning, How Aethera Works and Dismiss. A separate `aethera:welcome:v1` browser preference hides it after dismissal/start/topic opening; existing local progress or recent topics also suppress it. Storage failure retains session-only dismissal and reports the limitation.
+- Discovery: first module expanded for new browsers, Start Here on the first topic before progress, and Phase → Module → Topic instructions.
+- Home's **Enable Progress Tracking** reuses the existing local-editing confirmation. Help is also available in every footer; native modal supports keyboard dismissal and return focus. The footer carries exactly **Abhi**.
+- README describes all seven phases; guide matches the new labels and preserves backup/publication instructions.
+
+Checks: `npm test` **PASS (12 tests)**, `npm run build` **PASS** including exact curriculum/public-data validation, and extended `npm run test:e2e` **PASS** locally. Browser coverage includes first-time/read-only/returning states, visit-only Start label, tracking confirmation cancellation, welcome persistence, help Escape/focus, all existing backup/privacy flows, eight widths (320–1440), themes, reduced motion and emulated touch. Dark welcome screenshots at 320/390/1440 and light mobile presentation are recorded under ignored `artifacts/`. Desktop and mobile welcome screenshots were visually inspected. No additional test files or dependencies.
+
+Deployment for this change: pending commit/push and live verification. Prior deployment failures and device/manual verification limits below remain historical context, not evidence of success for this release.
 
 ## Source and authorization
 

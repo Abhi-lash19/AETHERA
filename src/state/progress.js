@@ -4,6 +4,12 @@ export const label = value => ({not_assessed:'Not assessed',needs_review:'Needs 
 export const emptyTopic = () => ({completedStudyActivityIds:[],understanding:'not_assessed',practice:'not_started',practiceSkipReason:'',notes:'',questions:'',needsReview:false,evidenceUrls:[],updatedAt:null});
 export const emptyState = () => ({schemaVersion:1,curriculumVersion:'aethera-core-v1',activeTopicId:null,topics:{},bookmarkedTopicIds:[],bookmarkedResourceIds:[],recentTopicIds:[],unmappedProgress:{}});
 export const topicState = (state,id) => ({...emptyTopic(),...state.topics[id]});
+// Visits, bookmarks, notes and skips are not evidence of learning activity.
+export const hasLearningProgress = (data,state) => data.topics.some(t=>{
+  const s=topicState(state,t.id);
+  return t.activities.some(a=>a.required&&s.completedStudyActivityIds.includes(a.id)) || s.understanding!=='not_assessed' || ['in_progress','completed'].includes(s.practice);
+});
+export const learningAction = (data,state,editing) => !editing?'Explore Learning Path':hasLearningProgress(data,state)?'Continue Learning':'Start Learning';
 export const understood = value => ['can_explain','can_apply'].includes(value);
 export const conceptual = (topic,state) => {const s=topicState(state,topic.id);return understood(s.understanding)&&topic.activities.filter(a=>a.required).every(a=>s.completedStudyActivityIds.includes(a.id));};
 export const complete = (topic,state) => conceptual(topic,state)&&(!topic.practice.required||topicState(state,topic.id).practice==='completed');

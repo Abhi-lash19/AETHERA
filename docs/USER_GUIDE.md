@@ -2,21 +2,26 @@
 
 Aethera helps you follow an AI engineering learning path. You can explore topics, use learning resources, try exercises, and record what you understand.
 
+## Your first visit
+
+The welcome panel introduces **Explore → Understand → Track**. Select **Start Learning** to open the Roadmap with Phase 1 and its first module expanded. The first topic is marked **Start Here**. This does not turn on editing or mark anything complete.
+
+Select **Dismiss** to hide the introduction, or **How Aethera Works** for a short explanation. Starting, dismissing, or opening a topic remembers that you have seen the introduction in this browser, when browser storage is available. Learners with existing local learning progress or recent topics do not see it again.
+
 ## Start and enable editing
 
 Aethera starts in **read-only** mode. You can explore the learning path right away. To record your own progress:
 
-1. Open **Progress**.
-2. Select **Enable editing on this browser**.
-3. Read the message and select **Enable editing** in the window that opens.
-4. If a published snapshot exists and you have no local progress, you may choose **Start from the published snapshot**. Otherwise, you can begin with an empty tracker.
+1. On **Home**, select **Enable Progress Tracking**. You can also open **Progress** and select **Enable editing on this browser**.
+2. Read the confirmation. If offered, choose **Start from the published snapshot** to use that starting point; otherwise begin empty.
+3. Select **Enable editing**, or **Cancel** to keep exploring without saving learning progress.
 
 Editing saves a copy in this browser. It does not sign you in or change the public website. Other visitors can edit their own browser copies too.
 
 ## Find your way around
 
-- **Home** shows your current topic, your progress, and a suggested next activity. Select **Continue learning** to open the suggestion.
-- **Roadmap** shows the learning path. Select a phase, then a module, then a topic. You can use **Search curriculum**, **Phase**, and **Learning state** to find topics. Select **Clear** to remove filters. **Show hierarchical list** changes the map to a list.
+- **Home** shows your current topic, your progress, and a suggested next activity. In public read-only mode, select **Explore Learning Path** to browse the Roadmap. With editing enabled, **Start Learning** opens your suggested activity before learning progress is recorded; **Continue Learning** appears after you check a required study item, assess your understanding, or start/complete practice. Visits, bookmarks, notes and skipped exercises alone do not change this label.
+- **Roadmap** shows the learning path. Select a phase, then a module, then a topic. You can use **Search curriculum**, **Phase**, and **Learning state** to find topics. Follow **Phase → Module → Topic**: select a phase, expand a module, and open a topic. For a new visitor, Phase 1 and its first module are already open, with **Start Here** on the first topic. Select **Clear** to remove filters. **Show hierarchical list** changes the map to a list.
 - **Saved** shows your bookmarked topics and resources. Use **Search saved items** to find one.
 - **Progress** shows your progress by phase and module, recent activity, items to revisit, backups, and publishing instructions.
 
@@ -101,3 +106,9 @@ Aethera does not automatically sync between devices. Your laptop edits are store
 The snapshot includes the current topic and study, understanding, and practical statuses. It does not include your notes, questions, evidence, bookmarks, review flags, recent activity, or skip reasons. Publishing requires repository access; the website itself cannot push to GitHub.
 
 If no snapshot has been published, the site says **No progress published yet**. If you see **Not saved**, check your browser storage and keep a backup. Existing local edits are not automatically replaced when a new snapshot is published.
+
+## Get help while learning
+
+Select **How Aethera Works** in the footer on any page, or in the welcome panel. The help window explains navigation, the three progress measures, private backups and public snapshots. It also links to this guide.
+
+Select **Got it**, **Close dialog**, or press Escape to close help and return to your page. Help does not change learning progress. You can always explore for free without enabling tracking; saving learning progress requires local editing, not an account.

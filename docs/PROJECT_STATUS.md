@@ -18,7 +18,7 @@ Changed files: `src/components/welcome.js` (new reusable welcome/help content), 
 
 Checks: `npm test` **PASS (12 tests)**, `npm run build` **PASS** including exact curriculum/public-data validation, and extended `npm run test:e2e` **PASS** locally. Browser coverage includes first-time/read-only/returning states, visit-only Start label, tracking confirmation cancellation, welcome persistence, help Escape/focus, all existing backup/privacy flows, eight widths (320–1440), themes, reduced motion and emulated touch. Dark welcome screenshots at 320/390/1440 and light mobile presentation are recorded under ignored `artifacts/`. Desktop and mobile welcome screenshots were visually inspected. No additional test files or dependencies.
 
-Deployment for this change: pending commit/push and live verification. Prior deployment failures and device/manual verification limits below remain historical context, not evidence of success for this release.
+Deployment: **VERIFIED** for implementation commit `cad7c44`. [Pages run 41002785382](https://github.com/Abhi-lash19/AETHERA/actions/runs/41002785382) completed successfully. The live URL returned HTTP 200 with the new production asset hashes. The full existing acceptance script also passed against the live site (`AETHERA_TEST_URL=https://abhi-lash19.github.io/AETHERA/`, `npm run test:e2e`, exit 0), using isolated test profiles; no published or personal learning data was changed. Manual/real-device limitations below still apply.
 
 ## Source and authorization
 
@@ -76,11 +76,11 @@ Fixed transient 320px overflow from panel entrance motion by using vertical moti
 
 ## Deployment state
 
-- Pages workflow and `/AETHERA/` base path configured in code.
-- User confirmed **Settings → Pages → Source: GitHub Actions** during this task.
-- Connected GitHub reports write/admin access. Local Git has no noninteractive stored credential; checked trees will be published with connected GitHub tools.
-- Target: `https://Abhi-lash19.github.io/AETHERA/`.
-- Live site and final commit SHA: **NOT VERIFIED YET** in this revision. Record the workflow and live checks after publishing.
+- Live site: [Aethera](https://abhi-lash19.github.io/AETHERA/).
+- Implementation commit: `cad7c44` — welcome, learning actions, discovery, help, tracking entry and Abhi branding.
+- [GitHub Pages workflow](https://github.com/Abhi-lash19/AETHERA/actions/runs/41002785382): **success**; CI installs, validates curriculum, tests and builds before deploying.
+- HTTP 200 and matching production assets verified. Live Playwright acceptance suite **PASS**, including onboarding, local persistence, public mode, navigation and mobile layouts.
+- The earlier release's Pages API 404 is resolved. The snapshot remains intentionally unpublished; deployment of the application does not publish personal learning progress.
 
 ## Outstanding verification and limitations
 
@@ -91,4 +91,4 @@ Fixed transient 320px overflow from panel entrance motion by using vertical moti
 
 ## Next single milestone
 
-Verify the first Pages deployment, then record the commit/run URL and live checks here. Do not add new product scope automatically.
+Review the delivered experience on a physical phone and with a screen reader when available. No further product scope is authorized automatically.
